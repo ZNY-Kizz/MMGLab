@@ -22,10 +22,12 @@ body{
     margin: 0;
     padding:0;
 }
-.navbar{
-    position: fixed;
-    width: 65%;
-    top:0;
+.navbar{ 
+    margin-bottom: 0; 
+    position: sticky;
+    top: 0;  
+    left: 0;                  
+    width: 100%;      
     z-index: 10;
 }
 .warpper{
