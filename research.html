@@ -149,7 +149,7 @@ section ul > li + li {
 }
 .title-center-line{
   text-align:center;
-  color:#ba0000;
+  color:#7cba00;
   font-weight:800;
   letter-spacing:.06em;
   margin: 1.5rem 0 1rem;
@@ -160,7 +160,7 @@ section ul > li + li {
   width:72px; height:4px;
   margin:.5rem auto 0;
   border-radius:2px;
-  background:linear-gradient(90deg,#ba0000,#ff9a9a);
+  background:linear-gradient(90deg,#79ba00,#fffc9a);
 }
 
 
@@ -211,16 +211,31 @@ section ul > li + li {
                         <div >
                             <h3 class="title-center-line"><strong>短视频内容分析与理解</strong></h3>
                             <ul>
-                                <li><p><strong>基于互联网实时视频鉴伪技术研究：</strong></p>
-                                <p style="font-size:16px;text-indent: 3.6rem;">本研究旨在通过深度学习技术识别视频内容的真实性，针对日益泛滥的DeepFake伪造视频进行检测。我们采用ResNeXt提取帧级图像特征，结合LSTM建模帧间时序关系，有效捕捉伪造带来的动态异常。模型在DeepFake Detection Challenge数据集上训练，具备良好的泛化能力。我们还制作了一个网页演示，用户可上传任意视频，实时检测其是否为伪造。该技术可广泛应用于媒体审核、舆情监控和信息安全等场景。</p>
+                                <li><p><strong>在线视频深度伪造实时检测方法研究：</strong></p>
+                                    <p style="font-size:16px;padding-left:3.6rem;white-space:pre-line;margin:0;">
+                                        帧级伪迹建模：残差网络多尺度捕捉压缩纹理与上采样痕。
+                                        时序一致性：时序网络聚合口型、眨眼与边界漂移异常。
+                                        泛化与校准：网络数据集训练，重编码扰动与温度缩放稳置信度。
+                                        实时系统：网页上传即检，流式滑窗推理与热力图辅助审核。
+                                        </p>
                                 <video src="videos\AI视频鉴伪.mp4" height="150px" loop="loop" controls="controls" poster="videos\images\1.jpg"></video> 
                                 </li>
-                                <li><p><strong>基于深度学习+大模型的短视频多模态认知分析及决策支持研究：</strong></p>
-                                <p style="font-size:16px;text-indent: 3.6rem;">本研究面向复杂视频内容的理解与决策支持，提出一种融合深度学习与大模型（LLM）的认知分析框架，聚焦于认知相关态势感知和视频传播打法策略两个方向。系统以短视频为研究对象，通过多模态感知（视觉、音频）+大语言模型认知推理的组合方式，提升对人类情绪、行为趋势和观众偏好的理解能力。本系统已部署本地测试版，并配有网页交互界面，可上传任意视频进行认知分析和策略生成。</p>
+                                <li><p><strong>多模态大模型驱动的短视频多模态认知分析及打法策略研究：</strong></p>
+                                    <p style="font-size:16px;padding-left:3.6rem;white-space:pre-line;margin:0;">
+                                        多模态—LLM协同认知：视听特征统一表示并经对齐适配器接入 LLM，生成含证据定位的可解释结论。
+                                        认知到策略一体化：将情绪、行为、受众偏好映射为策略参数（主题/节奏/镜头/配乐），用价值模型评估与生成最优策略。
+                                        鲁棒与迁移能力：跨平台转码/噪声/裁剪多分布增强，自监督与领域指令微调，支持小样本快速适配新垂类。
+                                        工程化闭环：网页流式推理、置信度校准与合规过滤；A/B 反馈回流驱动在线更新，输出时间线、要素热力与行动建议。
+                                        </p>
                                 <video src="videos\短视频，认知相关态势感知和打法策略.mp4" height="150px" loop="loop" controls="controls" poster="videos\images\2.jpg"></video>
                                 </li>
-                                <li><p><strong>基于工厂环境高相似度动作识别技术研究：</strong></p>
-                                <p style="font-size:16px;text-indent: 3.6rem;">本研究面向复杂视频内容的理解与决策支持，提出一种融合深度学习与大模型（LLM）的认知分析框架，聚焦于认知相关态势感知和视频传播打法策略两个方向。系统以短视频为研究对象，通过多模态感知（视觉、音频）+大语言模型认知推理的组合方式，提升对人类情绪、行为趋势和观众偏好的理解能力。本系统已部署本地测试版，并配有网页交互界面，可上传任意视频进行认知分析和策略生成。</p>
+                                <li><p><strong>工厂作业细粒度动作识别研究：</strong></p>
+                                    <p style="font-size:16px;padding-left:3.6rem;white-space:pre-line;margin:0;">
+                                        细粒度表征：建模姿态—部件—工具交互，度量学习区分近似动作。
+                                        多模态时空：RGB+骨架双流，跨视角对齐的时空 Transformer 聚合。
+                                        鲁棒泛化：跨设备迁移，域自适应与噪声鲁棒训练协同。
+                                        工程闭环：边端协同轻量化部署，在线主动学习与异常预警联动。
+                                        </p>
                                 <video src="videos\动作识别.mp4" height="150px" loop="loop" controls="controls" poster="videos\images\7.jpg"></video>  
                                 </li>
                             </ul>
@@ -233,15 +248,30 @@ section ul > li + li {
                             <h3 class="title-center-line"><strong>经典媒体数据语义分析</strong></h3>
                             <ul>
                                 <li><p><strong>具有情绪自适应交互感知导向的基于大模型的社区化特定场景数字机器人：</strong></p>
-                                <p style="font-size:16px;text-indent: 3.6rem;">本研究旨在通过深度学习技术识别视频内容的真实性，针对日益泛滥的DeepFake伪造视频进行检测。我们采用ResNeXt提取帧级图像特征，结合LSTM建模帧间时序关系，有效捕捉伪造带来的动态异常。模型在DeepFake Detection Challenge数据集上训练，具备良好的泛化能力。我们还制作了一个网页演示，用户可上传任意视频，实时检测其是否为伪造。该技术可广泛应用于媒体审核、舆情监控和信息安全等场景。</p>
+                                    <p style="font-size:16px;padding-left:3.6rem;white-space:pre-line;margin:0;">
+                                        领域专家化：以域适配预训练（DAP）+指令对齐（SFT）实现术语、话语风格与知识边界的精准掌握；结合 RAG 证据绑定与自一致性推理，显著降低幻觉并支持可追溯回答。
+                                        情绪与风格可控：通过情感嵌入与风格适配器，配合偏好优化（DPO/ORPO）实现语气、礼貌度与专业性的细粒度调控；叠加置信度校准与安全拒答策略，保证稳健与合规。
+                                        画像驱动个性化：构建“静态属性—行为轨迹—兴趣标签”三层画像并在线更新；在检索与提示路由中注入画像特征，实现因人而异的内容组织、术语选择与行动建议。
+                                        系统与运营级能力：端云协同的流式推理链（ASR→LLM→多风格 TTS），毫秒级可观测与 A/B 评测、灰度发布与回滚；内置合规与审计机制，在低时延下兼顾可运维与可治理。
+                                        </p>
                                 <video src="videos\数字机器人.mp4" height="150px" loop="loop" controls="controls" poster="videos\images\6.jpg"></video> 
                                 </li>
-                                <li><p><strong>基于互联网实时视频鉴伪技术研究：</strong></p>
-                                <p style="font-size:16px;text-indent: 3.6rem;">本研究旨在通过深度学习技术识别视频内容的真实性，针对日益泛滥的DeepFake伪造视频进行检测。我们采用ResNeXt提取帧级图像特征，结合LSTM建模帧间时序关系，有效捕捉伪造带来的动态异常。模型在DeepFake Detection Challenge数据集上训练，具备良好的泛化能力。我们还制作了一个网页演示，用户可上传任意视频，实时检测其是否为伪造。该技术可广泛应用于媒体审核、舆情监控和信息安全等场景。</p>
+                                <li><p><strong>在线视频深度伪造实时检测方法研究：</strong></p>
+                                    <p style="font-size:16px;padding-left:3.6rem;white-space:pre-line;margin:0;">
+                                        帧级伪迹建模：残差网络多尺度捕捉压缩纹理与上采样痕。
+                                        时序一致性：时序网络聚合口型、眨眼与边界漂移异常。
+                                        泛化与校准：网络数据集训练，重编码扰动与温度缩放稳置信度。
+                                        实时系统：网页上传即检，流式滑窗推理与热力图辅助审核。
+                                        </p>
                                 <video src="videos\AI视频鉴伪.mp4" height="150px" loop="loop" controls="controls" poster="videos\images\1.jpg"></video> 
                                 </li>
-                                <li><p><strong>基于深度学习+大模型的短视频多模态认知分析及决策支持研究：</strong></p>
-                                <p style="font-size:16px;text-indent: 3.6rem;">本研究面向复杂视频内容的理解与决策支持，提出一种融合深度学习与大模型（LLM）的认知分析框架，聚焦于认知相关态势感知和视频传播打法策略两个方向。系统以短视频为研究对象，通过多模态感知（视觉、音频）+大语言模型认知推理的组合方式，提升对人类情绪、行为趋势和观众偏好的理解能力。本系统已部署本地测试版，并配有网页交互界面，可上传任意视频进行认知分析和策略生成。</p>
+                                <li><p><strong>多模态大模型驱动的短视频多模态认知分析及打法策略研究：</strong></p>
+                                    <p style="font-size:16px;padding-left:3.6rem;white-space:pre-line;margin:0;"></p>
+                                        多模态—LLM协同认知：视听特征统一表示并经对齐适配器接入 LLM，生成含证据定位的可解释结论。
+                                        认知到策略一体化：将情绪、行为、受众偏好映射为策略参数（主题/节奏/镜头/配乐），用价值模型评估与生成最优策略。
+                                        鲁棒与迁移能力：跨平台转码/噪声/裁剪多分布增强，自监督与领域指令微调，支持小样本快速适配新垂类。
+                                        工程化闭环：网页流式推理、置信度校准与合规过滤；A/B 反馈回流驱动在线更新，输出时间线、要素热力与行动建议。
+                                        </p>
                                 <video src="videos\短视频，认知相关态势感知和打法策略.mp4" height="150px" loop="loop" controls="controls" poster="videos\images\2.jpg"></video>
                                 </li>
                             </ul>
@@ -255,20 +285,32 @@ section ul > li + li {
                         <div >
                             <h3 class="title-center-line"><strong>多源图像融合及增强</strong></h3>
                             <ul>
-                                <li><p><strong>感知导向的复杂公共设施暗光增强技术研究：</strong></p>
-                                <p style="font-size:16px;text-indent: 3.6rem;">本研究针对机场等关键基础设施在夜间或低光环境下监控视频质量下降的问题，提出了一种基于深度学习的视频暗光增强技术方案。系统采用双流感知架构，从光照与细节两个维度解耦处理暗光环境中的本质问题；并通过渐进式协调机制动态平衡亮度提升与细节保留，实现自然、清晰的视频增强效果。该方法在多个公开低光图像和视频增强数据集上取得SOTA性能，并在实际夜间机场监控视频中进行了测试。实验结果表明，增强前后的视频对比显著，极大改善了低照度下的可视性与感知质量，具备良好的工程应用前景。</p>
+                                <li><p><strong>感知质量驱动的关键基础设施低照度增强研究：</strong></p>
+                                    <p style="font-size:16px;padding-left:3.6rem;white-space:pre-line;margin:0;"></p>
+                                    物理先验×深度双流解耦：以照明/细节两路协同，融入 Retinex 与颜色恒常先验，兼顾亮度提升、纹理保真与色彩还原。
+                                    时空一致性与闪烁抑制：光流/时序注意对齐，约束跨帧曝光漂移与彩噪，避免视频增强后的闪变与边缘抖动。
+                                    鲁棒泛化与指标闭环：合成退化管线+跨数据集训练，域自适应与无参考感知指标（NIQE/LPIPS/VMAF）联合优化。
+                                    工程化低时延部署：端云协同流式推理（FP16/TensorRT/ONNX），与监控 VMS 无缝对接，A/B 与可观测性体系保障上线质量。
+                                    </p>
                                 <video src="videos\机场等设施暗光增强.mp4" height="150px" loop="loop" controls="controls" poster="videos\images\3.jpg"></video> 
                                 </li>
                                 <li><p><strong>面向高噪声与色偏的水下文物图像复原与增强研究：</strong></p>
-                                <p style="font-size:16px;text-indent: 3.6rem;">本研究针对深海环境下文物图像存在的色偏严重、细节模糊等问题，提出一种基于深度学习的图像增强方法。模型结合UIEB、EUVP、RUIE等水下数据集训练，通过并行提取细节与全局特征，实现色彩矫正与细节修复的平衡。实验显示，模型能有效还原木材与瓷器的真实颜色与纹理，显著提升图像感知质量，为水下文物识别与分析提供有力支持。</p>
+                                    <p style="font-size:16px;padding-left:3.6rem;white-space:pre-line;margin:0;"></p>
+                                    物理一致性建模：引入 Jaffe–McGlamery 水下成像先验，显式刻画波长选择性衰减与后向散射，结合可学习白平衡与颜色恒常约束，重建真实色彩基座。
+                                    细节—全局双流：多尺度金字塔/频域分支与全局上下文（Transformer/非局部）协同，配合边缘—纹理保真损失（MS-SSIM/LPIPS/边缘项），在色彩矫正与细节锐化间自适应权衡。
+                                    域外泛化与可用性：UIEB/EUVP/RUIE 联合训练叠加合成退化管线（浑浊/噪声/散射），以 UIQM/UCIQE 等无参考指标与下游识别一致性共同优化，确保提升“可见度”亦提升“可用度”。
+                                    工程与考古友好：提供批处理与交互式 Web/CLI，ONNX/TensorRT/FP16 加速低时延；保留 EXIF/ICC 与处理日志，配套前后对比与遮罩可视化、版本化与可追溯，支持实船/ROV 在线部署。
+                                    </p>
                                 <video src="videos\水下文物细节图像增强.mp4" height="150px" loop="loop" controls="controls" poster="videos\images\5.jpg"></video> 
                                 </li>
                                 <li><p><strong>图像增强驱动的鸟类姿态与距离联合估计研究：</strong></p>
                             
-                                <p style="font-size:16px;text-indent: 3.6rem;">本研究面向复杂环境下鸟类识别的实际需求，提出一套融合图像增强、姿态估计与距离推测的综合性鸟类识别方法。首先，通过自研图像增强模型，利用通道级多感受野信息聚合机制锐化鸟类轮廓，并结合色度恢复模块提升目标与背景的对比度，有效增强了远距离视频中的细节表达。
-                                在识别阶段，系统引入OpenPose、MediaPipe等主流姿态估计框架，识别鸟类滑翔、盘旋等动态姿势特征，并结合目标检测结果对鸟体大小进行估计，实现距离感知分类加权机制。利用预训练的ResNet/VGG等深度特征提取网络对鸟类图像进行高层语义判别，最终输出“普通鸟类”与“老鹰”两类预测结果及对应置信度。
-                                实验选取不同距离（800–1000、1000–1500、1500+）的视频片段进行分析，系统能在远距离条件下依据姿态特征进行合理判别。该研究对野外鸟类监测、生态研究与飞行安全预警具有良好的应用前景。
-                                </p>
+                                    <p style="font-size:16px;padding-left:3.6rem;white-space:pre-line;margin:0;"></p>
+                                    感知增强—任务耦合：通道级多感受野与色度恢复协同，SNR 自适应抑噪，避免过度锐化与伪边缘放大；与下游检测/姿态端到端联训，显著提升远距可分辨性。
+                                    姿态—时空建模：检测框+关键点双流融合，时空 Transformer/LSTM 编码滑翔、盘旋与振翅周期；跨尺度/视角对齐与运动周期先验共同约束姿态判别。
+                                    距离—物理先验融合：单目距离头将目标框尺度、焦距与地空几何、雾化衰减等线索纳入单调回归/分段分类；与类别置信度做后验融合，覆盖 800–1500m+ 场景。
+                                    系统—低时延可用：构建“增强→检测→姿态→距离→融合”的流式管线，FP16/INT8 与边端分层部署；前端叠加骨架/轨迹/距离条与不确定度，可在线回放、A/B 与日志审计。
+                                    </p>
                                 <video src="videos\鸟类姿态和距离推测.mp4" height="150px" loop="loop" controls="controls" poster="videos\images\4.jpg"></video> 
                                 </li>
                     </section>
@@ -283,8 +325,13 @@ section ul > li + li {
                         <div >
                             <h3 class="title-center-line"><strong>人口老龄化与主动健康</strong></h3>
                             <ul>
-                                <li><p><strong>基于深度学习+大模型的短视频多模态认知分析及决策支持研究：</strong></p>
-                                <p style="font-size:16px;text-indent: 3.6rem;">本研究面向复杂视频内容的理解与决策支持，提出一种融合深度学习与大模型（LLM）的认知分析框架，聚焦于认知相关态势感知和视频传播打法策略两个方向。系统以短视频为研究对象，通过多模态感知（视觉、音频）+大语言模型认知推理的组合方式，提升对人类情绪、行为趋势和观众偏好的理解能力。本系统已部署本地测试版，并配有网页交互界面，可上传任意视频进行认知分析和策略生成。</p>
+                                <li><p><strong>多模态大模型驱动的短视频多模态认知分析及打法策略研究：</strong></p>
+                                    <li><p><strong>多模态大模型驱动的短视频多模态认知分析及打法策略研究：</strong></p>
+                                        多模态—LLM协同认知：视听特征统一表示并经对齐适配器接入 LLM，生成含证据定位的可解释结论。
+                                        认知到策略一体化：将情绪、行为、受众偏好映射为策略参数（主题/节奏/镜头/配乐），用价值模型评估与生成最优策略。
+                                        鲁棒与迁移能力：跨平台转码/噪声/裁剪多分布增强，自监督与领域指令微调，支持小样本快速适配新垂类。
+                                        工程化闭环：网页流式推理、置信度校准与合规过滤；A/B 反馈回流驱动在线更新，输出时间线、要素热力与行动建议。
+                                        </p>
                                 <video src="videos\短视频，认知相关态势感知和打法策略.mp4" height="150px" loop="loop" controls="controls" poster="videos\images\2.jpg"></video>
                                 </li>
                             </ul>
