@@ -147,6 +147,21 @@ section ul > li + li {
   border-top: 1px solid #eee;        /* 可选：条目之间细线 */
   padding-top: 16px;                  /* 细线与内容的内边距 */
 }
+.title-center-line{
+  text-align:center;
+  color:#ba0000;
+  font-weight:800;
+  letter-spacing:.06em;
+  margin: 1.5rem 0 1rem;
+}
+.title-center-line::after{
+  content:"";
+  display:block;
+  width:72px; height:4px;
+  margin:.5rem auto 0;
+  border-radius:2px;
+  background:linear-gradient(90deg,#ba0000,#ff9a9a);
+}
 
 
 
