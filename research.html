@@ -93,33 +93,7 @@ A.info:hover    {color:green;background:transparent;text-decoration:underline}
 #fourth + section h3 { color:#ba0000; }
 
 /* 列表项里：视频在左、文字在右 */
-section ul > li{
-  display: grid;
-  grid-template-columns: 320px 1fr;  /* 左列视频宽度可按需改 */
-  column-gap: 12px;
-  align-items: start;
-}
 
-/* 让 video 占左列，并跨两行（对应两段文字） */
-section ul > li > video{
-  grid-column: 1;
-  grid-row: 1 / span 2;
-  width: 100%;
-  height: 150px;       /* 和你标签上的 height 一致 */
-  object-fit: cover;
-  margin: 0;
-}
-
-/* 右侧两段文字在第二列 */
-section ul > li > p{
-  grid-column: 2;
-  margin: 0 0 8px;
-}
-
-/* 覆盖你内联的缩进，避免右侧大空格 */
-section ul > li > p + p{
-  text-indent: 0 !important;
-}
 
 
 </style>
@@ -176,7 +150,7 @@ section ul > li > p + p{
                                 </li>
                                 <li><p><strong>基于工厂环境高相似度动作识别技术研究：</p>
                                 <p style="font-size:16px;text-indent: 3.6rem;">本研究面向复杂视频内容的理解与决策支持，提出一种融合深度学习与大模型（LLM）的认知分析框架，聚焦于认知相关态势感知和视频传播打法策略两个方向。系统以短视频为研究对象，通过多模态感知（视觉、音频）+大语言模型认知推理的组合方式，提升对人类情绪、行为趋势和观众偏好的理解能力。本系统已部署本地测试版，并配有网页交互界面，可上传任意视频进行认知分析和策略生成。</p>
-                                <video src="videos\动作识别.mp4" height="150px" loop="loop" controls="controls" poster="videos\images\7.png"></video>  
+                                <video src="videos\动作识别.mp4" height="150px" loop="loop" controls="controls" poster="videos\images\7.jpg"></video>  
                                 </li>
                             </ul>
                         </div>
@@ -189,7 +163,7 @@ section ul > li > p + p{
                             <ul>
                                 <li><p><strong>具有情绪自适应交互感知导向的基于大模型的社区化特定场景数字机器人：</p>
                                 <p style="font-size:16px;text-indent: 3.6rem;">本研究旨在通过深度学习技术识别视频内容的真实性，针对日益泛滥的DeepFake伪造视频进行检测。我们采用ResNeXt提取帧级图像特征，结合LSTM建模帧间时序关系，有效捕捉伪造带来的动态异常。模型在DeepFake Detection Challenge数据集上训练，具备良好的泛化能力。我们还制作了一个网页演示，用户可上传任意视频，实时检测其是否为伪造。该技术可广泛应用于媒体审核、舆情监控和信息安全等场景。</p>
-                                <video src="videos\数字机器人.mp4" height="150px" loop="loop" controls="controls" poster="videos\images\6.png"></video> 
+                                <video src="videos\数字机器人.mp4" height="150px" loop="loop" controls="controls" poster="videos\images\6.jpg"></video> 
                                 </li>
                                 <li><p><strong>基于互联网实时视频鉴伪技术研究：</p>
                                 <p style="font-size:16px;text-indent: 3.6rem;">本研究旨在通过深度学习技术识别视频内容的真实性，针对日益泛滥的DeepFake伪造视频进行检测。我们采用ResNeXt提取帧级图像特征，结合LSTM建模帧间时序关系，有效捕捉伪造带来的动态异常。模型在DeepFake Detection Challenge数据集上训练，具备良好的泛化能力。我们还制作了一个网页演示，用户可上传任意视频，实时检测其是否为伪造。该技术可广泛应用于媒体审核、舆情监控和信息安全等场景。</p>
