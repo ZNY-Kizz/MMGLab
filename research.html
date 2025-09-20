@@ -137,6 +137,18 @@ section ul > li > p:nth-of-type(2){
   }
 }
 
+/* 只作用于正文里的列表，不影响导航 */
+section ul { margin: 0; padding-left: 1.2em; }
+
+/* 让每个条目之间固定间隔（这里是 24px，可自行改大/改小） */
+section ul > li + li { margin-top: 24px; }
+section ul > li + li { 
+  margin-top: 24px; 
+  border-top: 1px solid #eee;        /* 可选：条目之间细线 */
+  padding-top: 16px;                  /* 细线与内容的内边距 */
+}
+
+
 
 
 
