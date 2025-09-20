@@ -92,7 +92,51 @@ A.info:hover    {color:green;background:transparent;text-decoration:underline}
 #third  + section h3,
 #fourth + section h3 { color: blue; }
 
-/* 列表项里：视频在左、文字在右 */
+/* ========== 列表项：左视频，右文字（不改 HTML 顺序） ========== */
+section ul > li{
+  display: grid;
+  grid-template-columns: 340px 1fr;   /* 左列给视频的宽度，可改 */
+  grid-template-rows: auto auto;      /* 右侧两行：标题段 + 正文段 */
+  column-gap: 16px;
+  align-items: start;
+}
+
+/* 左侧视频：占第一列，跨两行 */
+section ul > li > video{
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  width: 100%;
+  height: 150px;       /* 和你标签上的 height 一致 */
+  object-fit: cover;
+  margin: 0;
+}
+
+/* 右侧两段文字：放到第二列 */
+section ul > li > p:first-of-type{
+  grid-column: 2;
+  grid-row: 1;
+  margin: 0 0 8px 0;
+}
+section ul > li > p:nth-of-type(2){
+  grid-column: 2;
+  grid-row: 2;
+  margin: 0;
+  text-indent: 0 !important; /* 覆盖内联缩进，避免右侧空白 */
+}
+
+/* 小屏降级为上下排（可选） */
+@media (max-width: 768px){
+  section ul > li{
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+  section ul > li > video{
+    grid-column: 1;
+    grid-row: 2; /* 视频放在文字下方 */
+    height: auto;
+  }
+}
+
 
 
 
@@ -140,7 +184,7 @@ A.info:hover    {color:green;background:transparent;text-decoration:underline}
                         <div >
                             <h3><strong>短视频内容分析与理解</strong></h3>
                             <ul>
-                                <li><p><strong>基于互联网实时视频鉴伪技术研究：</p>
+                                <li><p><strong>基于互联网实时视频鉴伪技术研究：</strong></p>
                                 <p style="font-size:16px;text-indent: 3.6rem;">本研究旨在通过深度学习技术识别视频内容的真实性，针对日益泛滥的DeepFake伪造视频进行检测。我们采用ResNeXt提取帧级图像特征，结合LSTM建模帧间时序关系，有效捕捉伪造带来的动态异常。模型在DeepFake Detection Challenge数据集上训练，具备良好的泛化能力。我们还制作了一个网页演示，用户可上传任意视频，实时检测其是否为伪造。该技术可广泛应用于媒体审核、舆情监控和信息安全等场景。</p>
                                 <video src="videos\AI视频鉴伪.mp4" height="150px" loop="loop" controls="controls" poster="videos\images\1.jpg"></video> 
                                 </li>
