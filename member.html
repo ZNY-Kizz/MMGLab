@@ -57,6 +57,50 @@
             100% { transform: translateX(-155.5%); }
         }
 
+        .media-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .media-card {
+            width: calc(33.33% - 20px);
+            border: 1px solid #dddddd;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            background: #fff;
+        }
+        .media-card img {
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            width: 100%;
+            height: 150px;
+            border-radius: 8px;
+        }
+        .media-card p {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        @media (max-width: 768px) {
+            .media-card {
+                width: 100%;
+            }
+        }
+        .media-body {
+            margin-top: 10px;
+        }
+
+        .media-tag {
+            display: block;
+            margin-top: 8px;
+        }
+
+        .media-text {
+            
+            margin-top: 8px;
+        }
+
     </style>
 </head>
 <body >
@@ -118,6 +162,7 @@ A.info:hover    {color:green;background:transparent;text-decoration:underline}
                           <li><a href="#member">多媒体组成员</a></li>
                           <li><a href="#graduate">毕业去向</a></li>
                           <li><a href="#Lives">多媒体组风采</a></li>
+                          <li><a href="#Meidia">媒体宣传</a></li>
                         </ul>
                       </div>
                     </div>
@@ -138,46 +183,52 @@ A.info:hover    {color:green;background:transparent;text-decoration:underline}
                     <section style="font-size: 1.8rem;">
                         <h3><strong>最新消息</strong></h3>
                         <ul>
-                        <p style="color:red;">欢迎有志投身人工智能领域的热忱学子报考我的研究生或本科科研训练及毕设！2026年招生开启！（联系邮箱：<a href="mailto:pgjing@tju.edu.cn">pgjing@tju.edu.cn</a>）</p>
-                        <p style="color:red;">欢迎与我联系申请天津大学博士学位！（联系邮箱：<a href="mailto:pgjing@tju.edu.cn">pgjing@tju.edu.cn</a>）</p>
-
+                        
+                        <li class="news-item"><p>2026年9月1日：恭喜章文林同学的开放集语义识别论文被Information Processing & Management录用！Information Processing & Management为计算机科学领域的SCI一区顶级期刊，影响因子为6.9。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
                         </li>
-                        <li class="news-item"><p>2025年6月26日：恭喜谭钧夫同学的开放集语义识别论文被IEEE ICCV录用！ICCV为计算机视觉领域的顶级国际会议。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
+                        <li class="news-item"><p>2026年2月16日：恭喜与刘允老师合作的立体全向图像感知论文被IEEE TMM录用！IEEE TMM为多媒体领域的CCF A类国际期刊，SCI一区顶级期刊，影响因子为10.1。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
                         </li>
-                        <li class="news-item"><p>2025年9月5日：恭喜与刘允老师合作的视觉质量评价论文被Pattern Recognition录用！Pattern Recognition为模式识别领域的SCI一区顶级期刊。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
+                        <li class="news-item"><p>2025年11月23日：恭喜潘婷同学的个性化双人肖像定制论文被Information Fusion录用！Information Fusion为计算机科学领域的SCI一区顶级期刊，影响因子为15.5。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
                         </li>
-                        <li class="news-item"><p>2025年6月6日：恭喜赵赫同学的图像去炫光论文被Neural Networks录用！Neural Networks为计算机视觉领域的SCI一区顶级期刊。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
+                        <li class="news-item"><p>2025年9月28日：恭喜赵宁远同学的多源图像融合论文被Knowledge-Based Systems录用！KBS为人工智能领域的SCI一区顶级期刊，影响因子为7.6。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
                         </li>
-                        <li class="news-item"><p>2025年3月5日：恭喜杨帆同学的异常缺陷检测论文被IEEE TMM录用！IEEE TMM为多媒体领域的SCI一区顶级期刊。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
+                        <li class="news-item"><p>2025年9月5日：恭喜与刘允老师合作的视觉质量评价论文被Pattern Recognition录用！Pattern Recognition为模式识别领域的SCI一区顶级期刊，影响因子为7.6。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
                         </li>
-                        <li class="news-item"><p>2025年3月12日：恭喜乔宇同学的短视频多标签分类论文被IEEE TMM录用！IEEE TMM为多媒体领域的SCI一区顶级期刊。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
+                        <li class="news-item"><p>2025年6月26日：恭喜谭钧夫同学的开放集语义识别论文被IEEE ICCV录用！ICCV为计算机视觉领域的CCF A类顶级国际会议。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
                         </li>
-                        <li class="news-item"><p>2025年2月14日：恭喜苏恩祈同学的异常缺陷检测论文被ESWA录用！ESWA为专家系统领域的SCI一区顶级期刊。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
+                        <!-- <li class="news-item"><p>2025年6月6日：恭喜赵赫同学的图像去炫光论文被Neural Networks录用！Neural Networks为计算机视觉领域的SCI一区顶级期刊，影响因子为7.3。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
+                        </li> -->
+                        <li class="news-item"><p>2025年3月12日：恭喜乔宇同学的短视频多标签分类论文被IEEE TMM录用！IEEE TMM为多媒体领域的SCI一区顶级期刊，影响因子为9.7。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
                         </li>
-                        <li class="news-item"><p>2025年2月10日：恭喜马鹏同学的遥感图像变化检测论文被IEEE TGRS录用! IEEE TGRS为遥感领域SCI一区顶级期刊。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
+                        <li class="news-item"><p>2025年3月5日：恭喜杨帆同学的异常缺陷检测论文被IEEE TMM录用！IEEE TMM为多媒体领域的SCI一区顶级期刊，影响因子为9.7。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
                         </li>
-                        <li class="news-item"><p>2025年2月26日：恭喜赵晨同学的基于扩散模型的图像增强论文被IEEE WACV录用！IEEE WACV为计算机视觉领域的著名国际会议。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
+                        <!-- <li class="news-item"><p>2025年2月26日：恭喜赵晨同学的基于扩散模型的图像增强论文被IEEE WACV录用！IEEE WACV为计算机视觉领域的著名国际会议。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
+                        </li> -->
+                        <li class="news-item"><p>2025年2月14日：恭喜苏恩祈同学的异常缺陷检测论文被ESWA录用！ESWA为专家系统领域的SCI一区顶级期刊，影响因子为7.5。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
                         </li>
-                        <li class="news-item"><p>2024年10月9日：恭喜刘先燚、张丽娟同学的短视频事件检测方法论文被Knowledge-Based Systems录用！KBS为人工智能领域的SCI一区顶级期刊。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
+                        <li class="news-item"><p>2025年2月10日：恭喜马鹏同学的遥感图像变化检测论文被IEEE TGRS录用! IEEE TGRS为遥感领域SCI一区顶级期刊，影响因子为8.6。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
+                        </li>               
+                        <li class="news-item"><p>2024年10月9日：恭喜刘先燚、张丽娟同学的短视频事件检测方法论文被Knowledge-Based Systems录用！KBS为人工智能领域的SCI一区顶级期刊，影响因子为7.6。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
                         </li>
-                        <li class="news-item"><p>2024年8月9日：恭喜范富贵、洪道政同学的短视频多标签分类论文被IEEE TMM录用！IEEE TMM为多媒体领域的SCI一区顶级期刊。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
+                        <li class="news-item"><p>2024年8月9日：恭喜范富贵、洪道政同学的短视频多标签分类论文被IEEE TMM录用！IEEE TMM为多媒体领域的SCI一区顶级期刊，影响因子为9.7。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
                         </li>
-                        <li class="news-item"><p>2024年6月26日：恭喜赵璇同学的短视频多标签分类论文被IEEE TMM录用！IEEE TMM为多媒体领域的SCI一区顶级期刊。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
+                        <li class="news-item"><p>2024年6月26日：恭喜赵璇同学的短视频多标签分类论文被IEEE TMM录用！IEEE TMM为多媒体领域的SCI一区顶级期刊，影响因子为9.7。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
                         </li>
-                        <li class="news-item"><p>2024年5月28日：恭喜范富贵同学的短视频多标签分类论文被IEEE TMM录用！IEEE TMM为多媒体领域的SCI一区顶级期刊。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
+                        <li class="news-item"><p>2024年5月28日：恭喜范富贵同学的短视频多标签分类论文被IEEE TMM录用！IEEE TMM为多媒体领域的SCI一区顶级期刊，影响因子为9.7。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
                         </li>
-                        <li class="news-item"><p>2023年10月16日：恭喜张凯同学的双偏好感知网络驱动的社交物联网时尚推荐论文被IEEE IOT录用！IEEE IOT为物联网领域的SCI Top期刊。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
+                        <!-- <li class="news-item"><p>2024年3月8日：恭喜刘先燚、张丽娟同学的短视频多标签分类论文被ACM TOMM录用！ACM TOMM为多媒体计算、通信和应用领域的SCI一区顶级期刊，影响因子为5.0。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
+                        </li> -->
+                        <li class="news-item"><p>2023年10月26日：恭喜刘先燚、王骥同学的图像情感分布预测论文被ACM MM录用！ACM MM为图形学与多媒体领域的CCF A类顶级国际会议。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
                         </li>
-                        <li class="news-item"><p>2023年2月20日：恭喜崔凯同学的多模态注意力机制论文被IEEE TMM录用！IEEE TMM为多媒体领域的SCI一区顶级期刊。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
-                        </li>                                                       
-                        <li class="news-item"><p>2024年3月8日：恭喜刘先燚、张丽娟同学的短视频多标签分类论文被ACM TOMM录用！ACM TOMM为多媒体计算、通信和应用领域的SCI一区顶级期刊。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
-                        </li>  
-                        <li class="news-item"><p>2022年1月6日：恭喜赵玮同学的视觉情感分布预测论文被IEEE TMM录用！IEEE TMM为多媒体领域的SCI一区顶级期刊。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
+                        <li class="news-item"><p>2023年10月16日：恭喜张凯同学的双偏好感知网络驱动的社交物联网时尚推荐论文被IEEE IOT录用！IEEE IOT为物联网领域的SCI Top期刊，影响因子为8.2。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
                         </li>
-                        <li class="news-item"><p>2023年10月26日：恭喜刘先燚、王骥同学的图像情感分布预测论文被ACM MM录用！ACM MM为图形学与多媒体领域的顶级国际会议。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
+                        <li class="news-item"><p>2023年7月1日：恭喜刘姝伊同学的短视频多模态分类论文被Information Sciences录用！Information Sciences为计算机科学和信息系统领域的SCI一区顶级期刊，影响因子为8.1。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
+                        </li>                                                  
+                        <li class="news-item"><p>2023年2月20日：恭喜崔凯同学的多模态注意力机制论文被IEEE TMM录用！IEEE TMM为多媒体领域的SCI一区顶级期刊，影响因子为8.4。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
+                        </li>     
+                        <li class="news-item"><p>2022年1月6日：恭喜赵玮同学的视觉情感分布预测论文被IEEE TMM录用！IEEE TMM为多媒体领域的SCI一区顶级期刊，影响因子为8.4。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
                         </li>
-                        <li class="news-item"><p>2023年7月1日：恭喜刘姝伊同学的短视频多模态分类论文被Information Sciences录用！Information Sciences为计算机科学和信息系统领域的SCI一区顶级期刊。<img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" alt="emoji" width="20" height="20"></p>
-                        </li>
+                        
 
                             <div id="show-more" class="show-more" onclick="showMoreNews()">Show More</div>
                             <div id="show-less" class="show-less" onclick="showLessNews()">Show Less</div>
@@ -186,11 +237,11 @@ A.info:hover    {color:green;background:transparent;text-decoration:underline}
 
 
 
-                    <p id="member" style="height:4rem;margin: 0;">&nbsp;</p>
+                    <p id="member" style="height:4rem;margin:0;">&nbsp;</p>
                     <section>
                         <h3><strong>多媒体组成员</strong></h3>
                         <div class="perpic">
-                            <p style="font-size:18px;font-weight:600;margin-top: 20px;">负责人: </p>
+                            <p style="font-size:18px;font-weight:600;margin-top:20px;">负责人: </p>
                             <div class="part1">
 
                                 <div class="w18">
@@ -244,7 +295,14 @@ A.info:hover    {color:green;background:transparent;text-decoration:underline}
                                     <p style="margin-top: 5px;">屈楷华</p>
                                 </div>
 
-
+                                <div class="w18">
+                                    <img src="common/img/1_4.jpg" />
+                                    <div class="mark">
+                                        <p style="margin-top: 140px;margin-bottom: 5px;">赵宁远</p>
+                                        <p><a href="student_pages/znyEN.html">HOMEPAGE</a></p>
+                                    </div>
+                                    <p style="margin-top: 5px;">赵宁远</p>
+                                </div>
                                 
                             </div>
                             <p style="font-size:18px;font-weight:600;margin-top: 20px;">2023级硕士:</p>
@@ -280,15 +338,6 @@ A.info:hover    {color:green;background:transparent;text-decoration:underline}
                                 <div class="w18">
                                     <img src="common/img/2_4.jpg" />
                                     <div class="mark">
-                                        <p style="margin-top: 140px;margin-bottom: 5px;">赵宁远</p>
-                                        <p><a href="student_pages/znyEN.html">HOMEPAGE</a></p>
-                                    </div>
-                                    <p style="margin-top: 5px;">赵宁远</p>
-                                </div>
-
-                                <div class="w18">
-                                    <img src="common/img/2_5.jpg" />
-                                    <div class="mark">
                                         <p style="margin-top: 140px;margin-bottom: 5px;">郑雯</p>
                                         <p><a href="student_pages/zwEN.html">HOMEPAGE</a></p>
                                     </div>
@@ -296,7 +345,7 @@ A.info:hover    {color:green;background:transparent;text-decoration:underline}
                                 </div>
 
                                 <div class="w18">
-                                    <img src="common/img/2_6.jpg" />
+                                    <img src="common/img/2_5.jpg" />
                                     <div class="mark">
                                         <p style="margin-top: 140px;margin-bottom: 5px;">刘杰</p>
                                         <p><a href="student_pages/ljEN.html">HOMEPAGE</a></p>
@@ -305,7 +354,7 @@ A.info:hover    {color:green;background:transparent;text-decoration:underline}
                                 </div>
 
                                 <div class="w18">
-                                    <img src="common/img/2_7.jpg" />
+                                    <img src="common/img/2_6.jpg" />
                                     <div class="mark">
                                         <p style="margin-top: 140px;margin-bottom: 5px;">程浩楠</p>
                                         <p><a href="student_pages/chnEN.html">HOMEPAGE</a></p>
@@ -442,10 +491,71 @@ A.info:hover    {color:green;background:transparent;text-decoration:underline}
                                     <p style="margin-top: 5px;">殷欣冉</p>
                                 </div>
 
+                                <div class="w18">
+                                    <img src="common/img/4_6.jpg" />
+                                    <div class="mark">
+                                        <p style="margin-top: 140px;margin-bottom: 5px;">王文华</p>
+                                        <p><a href="student_pages/wwhEN.html">HOMEPAGE</a></p>
+                                    </div>
+                                    <p style="margin-top: 5px;">王文华</p>
+                                </div>
+
+                                <div class="w18">
+                                    <img src="common/img/4_7.jpg" />
+                                    <div class="mark">
+                                        <p style="margin-top: 140px;margin-bottom: 5px;">张泽椿</p>
+                                        <p><a href="student_pages/zzcEN.html">HOMEPAGE</a></p>
+                                    </div>
+                                    <p style="margin-top: 5px;">张泽椿</p>
+                                </div>
+
+                            </div>
+
+                            <p style="font-size:18px;font-weight:600;margin-top: 20px;">2026级硕士:</p>
+                            <div class="part1">
+
+                                <div class="w18">
+                                    <img src="common/img/5_1.jpg" />
+                                    <div class="mark">
+                                        <p style="margin-top: 140px;margin-bottom: 5px;">王凯桐</p>
+                                        <p><a href="student_pages/wktEN.html">HOMEPAGE</a></p>
+                                    </div>
+                                    <p style="margin-top: 5px;">王凯桐</p>
+                                </div>
+
+                                <div class="w18">
+                                    <img src="common/img/5_2.jpg" />
+                                    <div class="mark">
+                                        <p style="margin-top: 140px;margin-bottom: 5px;">王子扬</p>
+                                        <p><a href="student_pages/wzyEN.html">HOMEPAGE</a></p>
+                                    </div>
+                                    <p style="margin-top: 5px;">王子扬</p>
+                                </div>
+
+                                <div class="w18">
+                                    <img src="common/img/5_3.jpg" />
+                                    <div class="mark">
+                                        <p style="margin-top: 140px;margin-bottom: 5px;">游运承</p>
+                                        <p><a href="student_pages/yycEN.html">HOMEPAGE</a></p>
+                                    </div>
+                                    <p style="margin-top: 5px;">游运承</p>
+                                </div>
+
+                                <div class="w18">
+                                    <img src="common/img/5_4.jpg" />
+                                    <div class="mark">
+                                        <p style="margin-top: 140px;margin-bottom: 5px;">张子涵</p>
+                                        <p><a href="student_pages/zzhEN.html">HOMEPAGE</a></p>
+                                    </div>
+                                    <p style="margin-top: 5px;">张子涵</p>
+                                </div>
+
                             </div>
 
 
                         </div class="perpic">
+
+                        
 
                     </section>
 
@@ -549,7 +659,7 @@ A.info:hover    {color:green;background:transparent;text-decoration:underline}
                                         <td></td>
                                         <td>Mr. Sui</td>
                                         <td>北京理想汽车有限公司</td>
-                                    </tr>   
+                                    </tr>
 
                                     <tr style="height: 30px;">
                                         <td>Mr. Bai</td>
@@ -591,12 +701,18 @@ A.info:hover    {color:green;background:transparent;text-decoration:underline}
                                         <td>河南省广播电视台</td>
                                     </tr>
                                     
-                                    
                                     <tr style="height: 30px;">
                                         <td>Mr. Lin</td>
                                         <td>厦门天马微电子有限公司</td>
                                         <td></td>
-                
+                                        <td>Ms. Zheng</td>
+                                        <td>北京理想汽车有限公司</td>
+                                    </tr>
+
+                                    <tr style="height: 30px;">
+                                        <td>Mr. Chen</td>
+                                        <td>中国中车集团有限公司</td>
+                                        <td></td>
                                     </tr>
                     
                                 </table>
@@ -641,6 +757,12 @@ A.info:hover    {color:green;background:transparent;text-decoration:underline}
                                         <td></td>
                                         <td>Mr. Su</td>
                                         <td>沈阳公务员</td>
+                                    </tr>
+
+                                    <tr style="height: 30px;">
+                                        <td>Mr. Liu</td>
+                                        <td>冀北电网</td>
+                                        <td></td>
                                     </tr>  
                     
                                 </table>
@@ -675,7 +797,9 @@ A.info:hover    {color:green;background:transparent;text-decoration:underline}
                                         <td>Mr. Ye</td>
                                         <td>之江实验室</td>
                                         <td></td>
-                            
+                                        <td>Mr. Chen</td>
+                                        <td>中国航天科工集团第九研究院</td>
+                                        <td></td>
                                     </tr>   
                     
                                 </table>
@@ -746,17 +870,41 @@ A.info:hover    {color:green;background:transparent;text-decoration:underline}
                                     <img src="common/img/photo3.jpg" alt="图片11">
                                     <div class="slide-number"><strong>天大美景</strong></div>
                                 </div>  
-
-
-
-                           
                             </div>
                         </div>
                     </section>
-                    
 
-                    </div>
+                    <p id="media" style="height:4rem;margin: 0;">&nbsp;</p>
+                    <section style="font-size: 1.8rem;">
+                        <h3><strong>媒体宣传</strong></h3>
+                        <p margin-top: 12px;>围绕课题组在短视频理解、多模态分析与产学研协同方向的代表性成果，采用“推文 + 图片”形式展示媒体传播内容，便于后续继续扩展与替换。</p>
+                        <div class="media-grid">
+                            <div class="media-card">
+                                <img alt="ABPolicy" src="common/img/媒体宣传/ABPolicy.png">
+                                <div class="media-body">
+                                    <span class="media-tag"><a href="https://mp.weixin.qq.com/s/5U4uj7DWfqAmgEu4GMPfGg"><p margin-top: 12px></p><b>论文推荐</b></a></span>
+                                    <div class="media-text">杨帆同学针对同步推理导致的运动不流畅问题，提出了ABPolicy，用B样条 + 流匹配 + 异步重拟合技术，从根源解决机械臂动作卡顿、抖动、响应慢问题，动态任务成功率大幅提升。</div>
+                                </div>
+                            </div>
+                            <div class="media-card">
+                                <img alt="钟亚洁" src="common/img/媒体宣传/钟亚洁.png">
+                                <div class="media-body">
+                                    <span class="media-tag"><a href="https://mp.weixin.qq.com/s/wsBB4giXFiJkY_jR3UcD3g"><p margin-top: 12px></p><b>就业风采</b></a></span>
+                                    <div class="media-text">钟亚洁同学品学兼优、科研实践双优，获评多项校级荣誉与高额奖学金，学生工作经验丰富。她坚定选择成为选调生，立志扎根基层、服务群众，以实干担当在基层一线践行青春使命。</div>
+                                </div>
+                            </div>
+                            <div class="media-card">
+                                <img alt="央视合作" src="common/img/媒体宣传/智能视觉.gif">
+                                <div class="media-body">
+                                    <span class="media-tag"><a href="https://mp.weixin.qq.com/s/vqSVnUj6c0GNjVGIDymelg"><p margin-top: 12px></p><b>合作报道</b></a></span>
+                                    <div class="media-text">苏育挺教授、井佩光副教授、硕士生刘宇轩等参与协作研发全国总工会与央视联合打造的大国工匠公共传播项目，运用多模态视觉智能技术对百余位大国工匠历年报道影像进行分析。</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
                 </div>
+            </div>
         </dic>
     </div>
 
