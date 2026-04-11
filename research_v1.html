@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="keywords" content="Open Vision, Open View, Open Venture" />
+    <title>TJUMMG主页</title>
+    <link rel="stylesheet" href="common/css/bootstrap.min.css">
+    <link rel="stylesheet" href="common/css/index.css">
+    <link rel="shortcut icon" href="common/img/logo3.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
+            background-color: #f8f9fa; /* 全局背景微灰 */
+            color: #333;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-155.5%); }
+        }
+
+        /* --- 链接与新闻样式 --- */
+        A.applink:hover {border: 2px dotted #DCE6F4;padding:2px;background-color:#ffff00;color:green;text-decoration:none}
+        A.applink       {border: 2px dotted #DCE6F4;padding:2px;color:#2F5BFF;background:transparent;text-decoration:none}
+        A.info          {color:#ba0000;background:transparent;text-decoration:none}
+        A.info:hover    {color:green;background:transparent;text-decoration:underline}
+        .news-item { display: none; }
+        .show-more, .show-less {
+            cursor: pointer; color: blue; text-decoration: underline; margin-top: 20px; display: inline-block;
+        }
+
+        :root {
+            --tju-blue: #003580; 
+        }
+
+        .nav-tabs-custom {
+            display: flex;
+            width: 100%;
+            /* 1. 实现吸顶 */
+            position: sticky;
+            top: 0; 
+            /* 2. 确保浮在视频之上 */
+            z-index: 1000; 
+            
+            background-color: #fff; /* 默认白底 */
+            margin-bottom: 30px;
+            margin-top: 0; /* 去掉顶部间距，保证吸顶贴合 */
+            border-radius: 0 0 4px 4px; /* 仅底部圆角 */
+            overflow: hidden;
+            /* 3. 底部微阴影 */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+            border-bottom: 1px solid #eee;
+        }
+
+        .nav-item-custom {
+            flex: 1;
+            text-align: center;
+            /* 3. 压缩高度 (padding减小) */
+            padding: 12px 10px; 
+            font-size: 15px; /* 字体稍微调精细一点 */
+            font-weight: bold;
+            text-decoration: none !important;
+            transition: all 0.2s ease;
+            
+            /* 4. 未选中状态：白底蓝字 */
+            background-color: #fff; 
+            color: var(--tju-blue); 
+            border-right: 1px solid #f0f0f0; /* 浅色分隔线 */
+        }
+
+        .nav-item-custom:last-child {
+            border-right: none;
+        }
+
+        /* 4. 选中/激活状态：蓝底白字 */
+        .nav-item-custom.active, 
+        .nav-item-custom:hover {
+            background-color: var(--tju-blue);
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .nav-tabs-custom {
+                flex-direction: column;
+                position: relative; /* 手机端通常不建议强行吸顶，占空间 */
+            }
+            .nav-item-custom {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+            }
+        }
+        /* ======================================================= */
+        /* === 导航栏重构 END === */
+        /* ======================================================= */
+
+
+        /* ======================================================= */
+        /* === 内容区卡片式重构 (方案2) START === */
+        /* ======================================================= */
+        
+        .project-section ul { margin: 0; padding: 0; list-style: none; }
+        
+        /* 这里 li 充当了 .project-card 容器的角色 */
+        .project-section ul > li {
+            display: flex;            
+            flex-wrap: wrap;         
+            align-items: center;     
+            margin-bottom: 15px;     
+            
+            /* 1. 卡片式核心样式 */
+            background: #fff;        
+            border-radius: 12px;     
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05); /* 柔和阴影 */
+            border: 1px solid rgba(0,0,0,0.02);
+            
+            /* 2. 内容在容器内居中，保留间距 */
+            padding: 30px; /* 给卡片内部留白，把视频框在里面 */
+            
+            /* 3. 点击交互样式 */
+            cursor: pointer; 
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s;
+        }
+
+        /* 鼠标悬停动效 */
+        .project-section ul > li:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        /* ======================================================= */
+        /* === 【新增】视频播放时的卡片高亮样式 === */
+        /* ======================================================= */
+        .project-section ul > li.playing-card {
+            background-color: #eef6ff !important; /* 浅蓝色背景 */
+            border-color: #b3d7ff !important;     /* 边框微调为蓝色 */
+            box-shadow: 0 8px 25px rgba(0, 53, 128, 0.15); /* 阴影稍微加重一点 */
+        }
+
+        /* --- 修改点：列宽调整 (视频4，文字6) --- */
+        .vid-col {
+            flex: 0 0 40%;   /* 宽度改为 40% */
+            max-width: 40%;  /* 宽度改为 40% */
+            /* 视频与文字的间距 */
+            padding-right: 25px; 
+        }
+
+        .txt-col {
+            flex: 0 0 60%;   /* 宽度改为 60% */
+            max-width: 60%;  /* 宽度改为 60% */
+            padding-left: 25px; 
+        }
+
+        .vid-col video {
+            /* 视频替换为轮播图，原始视频元素隐藏 */
+            display: none;
+        }
+
+        .image-carousel {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            overflow: hidden;
+            border-radius: 8px;
+            background-color: #000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .image-carousel img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        .image-carousel img.active {
+            opacity: 1;
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            left: 50%;
+            bottom: 12px;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 2;
+        }
+
+        .carousel-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.45);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .carousel-indicator.active {
+            background-color: #ffffff;
+        }
+
+        .project-title {
+            font-size: 18px;
+            color: #003580; 
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eef2f6; 
+            position: relative;
+        }
+        .project-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #003580;
+        }
+
+        .project-desc {
+            font-size: 15px;
+            line-height: 1.8; 
+            color: #555;
+            text-align: justify; 
+            margin: 0;
+        }
+
+        /* --- 修改点：已删除偶数行翻转逻辑，统一为左视频右文字 --- */
+        
+        @media (max-width: 768px) {
+            .project-section ul > li {
+                flex-direction: column; 
+                padding: 20px;
+            }
+            .vid-col, .txt-col {
+                flex: 0 0 100%;
+                max-width: 100%;
+                padding: 0 !important;
+            }
+            .vid-col {
+                margin-bottom: 20px;
+            }
+        }
+
+        .title-center-line {
+            text-align: center;
+            color: #003580;
+            font-weight: 800;
+            letter-spacing: .06em;
+            margin: 4rem 0 2rem;
+            /* 增加 scroll-margin-top 配合吸顶导航，防止锚点被遮挡 */
+            scroll-margin-top: 80px; 
+        }
+        .title-center-line::after {
+            content: "";
+            display: block;
+            width: 72px; height: 4px;
+            margin: .8rem auto 0;
+            border-radius: 2px;
+            background: linear-gradient(90deg, #003580, #0056b3);
+        }
+        /* ======================================================= */
+        /* === 内容区卡片式重构 END === */
+        /* ======================================================= */
+
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid" style="padding:0 8%;">
+        <div class="row">
+            
+            <div class="col-md-2 col-xs-2 col-sm-2">
+                <div class="warpper">
+                    <div class="logo"></div>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li role="presentation"><a href="index.html">师资简介</a></li>
+                        <li role="presentation"><a href="member.html">多媒体组介绍</a></li>
+                        <li role="presentation" class="active"><a href="research.html">研究成果展示</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-10 col-xs-10 col-sm-10 mb20">
+                
+                <div class="nav-tabs-custom">
+                    <a href="#first" class="nav-item-custom active" onclick="setActive(this)">短视频多维内容理解与分析</a>
+                    <a href="#second" class="nav-item-custom" onclick="setActive(this)">多源图像增强与鲁棒异常检测</a>
+                    <a href="#third" class="nav-item-custom" onclick="setActive(this)">医学影像处理与精准诊疗</a>
+                    <a href="#fourth" class="nav-item-custom" onclick="setActive(this)">应用导向的多媒体系统工程</a>
+                </div>
+
+                <div>
+
+                    <p id="first" style="height:0;margin:0;">&nbsp;</p> <section class="project-section">
+                        <h3 class="title-center-line">短视频多维内容理解与分析</h3>
+                        <ul>
+                            <li>
+                                <div class="vid-col">
+                                    <video src="videos\阅兵.mp4" loop="loop" controls="controls" poster="videos\images\8.jpg"></video>
+                                </div>
+                                <div class="txt-col">
+                                    <div class="project-title">央视合作阅兵视频深度可解释方法研究</div>
+                                    <p class="project-desc">
+                                            <strong>色条条形码：</strong>逐帧主色聚类与色域量化，滑窗平滑去噪并保留剪辑突变。<br>
+                                            <strong>时序节律解析：</strong>色带密度卷积与峰谷检测，镜头时长分布与情绪转调显化。<br>
+                                            <strong>颜色散点云：</strong>主色HSV嵌入至平面，UMAP/t-SNE保持相似度与风格簇。<br>
+                                            <strong>尺寸与交互：</strong>缩略图作点、像素量映射大小，核密度热力与刷选联动导出。
+                                    </p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="vid-col">
+                                    <video src="videos\AI视频鉴伪.mp4" loop="loop" controls="controls" poster="videos\images\1.jpg"></video>
+                                </div>
+                                <div class="txt-col">
+                                    <div class="project-title">在线视频深度伪造实时检测方法研究</div>
+                                    <p class="project-desc">
+                                            <strong>帧级伪迹建模：</strong>残差网络多尺度捕捉压缩纹理与上采样痕。<br>
+                                            <strong>时序一致性：</strong>时序网络聚合口型、眨眼与边界漂移异常。<br>
+                                            <strong>泛化与校准：</strong>网络数据集训练，重编码扰动与温度缩放稳置信度。<br>
+                                            <strong>实时系统：</strong>网页上传即检，流式滑窗推理与热力图辅助审核。
+                                    </p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="vid-col">
+                                    <video src="videos\短视频，认知相关态势感知和打法策略.mp4" loop="loop" controls="controls" poster="videos\images\2.jpg"></video>
+                                </div>
+                                <div class="txt-col">
+                                    <div class="project-title">模态大模型驱动的短视频认知分析及打法策略研究</div>
+                                    <p class="project-desc">
+                                            <strong>多模态LLM协同认知：</strong>视听特征统一并经对齐适配器接入 LLM，生成含定位的可解释结论。<br>
+                                            <strong>认知到策略：</strong>将情绪、受众偏好等映射为策略参数，用价值模型评估与生成最优策略。<br>
+                                            <strong>鲁棒与迁移能力：</strong>跨平台转码/噪声/裁剪多分布增强，支持小样本快速适配新垂类。<br>
+                                            <strong>工程闭环：</strong>网页流式推理、A/B反馈回流驱动在线更新。
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <p id="second" style="height:0;margin:0;">&nbsp;</p>
+                    <section class="project-section">
+                        <h3 class="title-center-line">面向应用的多媒体工程</h3>
+                        <ul>
+                            <li>
+                                <div class="vid-col">
+                                    <video src="videos\数字机器人.mp4" loop="loop" controls="controls" poster="videos\images\6.jpg"></video>
+                                </div>
+                                <div class="txt-col">
+                                    <div class="project-title">具有情绪自适应交互感知导向的数字机器人</div>
+                                    <p class="project-desc">
+                                            <strong>领域专家化：</strong>以域适配+指令对齐实现知识边界的精准掌握；结合RAG支持可追溯回答。<br>
+                                            <strong>情绪与风格可控：</strong>通过情感嵌入与风格适配器，配合偏好优化实现风格回答。<br>
+                                            <strong>画像驱动个性化：</strong>构建“静态属性—行为轨迹—兴趣标签”三层画像并在线更新。<br>
+                                            <strong>系统与运营级能力：</strong>端云协同的流式推理链，毫秒级可观测与 A/B 评测。
+                                    </p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="vid-col">
+                                    <video src="videos\动作识别.mp4" loop="loop" controls="controls" poster="videos\images\7.jpg"></video>
+                                </div>
+                                <div class="txt-col">
+                                    <div class="project-title">工厂作业细粒度动作识别研究</div>
+                                    <p class="project-desc">
+                                            <strong>细粒度表征：</strong>建模姿态—部件—工具交互，度量学习区分近似动作。<br>
+                                            <strong>多模态时空：</strong>RGB+骨架双流，跨视角对齐的时空 Transformer 聚合。<br>
+                                            <strong>鲁棒泛化：</strong>跨设备迁移，域自适应与噪声鲁棒训练协同。<br>
+                                            <strong>工程闭环：</strong>边端协同轻量化部署，在线主动学习与异常预警联动。
+                                    </p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="vid-col">
+                                    <video src="videos\头盔.mp4" loop="loop" controls="controls" poster="videos\images\10.jpg"></video>
+                                </div>
+                                <div class="txt-col">
+                                    <div class="project-title">施工场景安全帽佩戴合规视频实时监测平台</div>
+                                    <p class="project-desc">
+                                            <strong>头盔佩戴与扣带识别：</strong>人头—安全帽双分支检测，细粒度分割判定佩戴、颜色与扣带闭合。<br>
+                                            <strong>时序一致性：</strong>SORT/Kalman轨迹聚合与光流约束，低头转身与遮挡时抑制抖动漏检。<br>
+                                            <strong>泛化与校准：</strong>光照/压缩/运动模糊扰动训练，温度缩放与分层阈值稳置信度。<br>
+                                            <strong>实时系统：</strong>摄像头/RTSP接入即检，流式滑窗推理与热力图辅助审核。
+                                    </p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="vid-col">
+                                    <video src="videos\具身智能.mp4" loop="loop" controls="controls" poster="videos\images\9.jpg"></video>
+                                </div>
+                                <div class="txt-col">
+                                    <div class="project-title">具身智能蔬果采摘机械臂研究</div>
+                                    <p class="project-desc">
+                                            <strong>果实与果柄感知：</strong>RGB-D/多光谱融合，实例分割+3D定位抗遮挡与逆光。<br>
+                                            <strong>柔顺抓取与剥离：</strong>软体夹爪+阻抗/力控闭环，最小损伤断柄与表皮保护。<br>
+                                            <strong>视动协同与规划：</strong>主动视角选位建图，树冠内多目标序列调度。<br>
+                                            <strong>泛化与实时系统：</strong>Sim2Real域自适应与风雨尘扰动鲁棒，在线标定。
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <p id="third" style="height:0;margin:0;">&nbsp;</p>
+                    <section class="project-section">
+                        <h3 class="title-center-line">多源图像融合及增强</h3>
+                        <ul>
+                            <li>
+                                <div class="vid-col">
+                                    <video src="videos\机场等设施暗光增强.mp4" loop="loop" controls="controls" poster="videos\images\3.jpg"></video>
+                                </div>
+                                <div class="txt-col">
+                                    <div class="project-title">感知质量驱动的关键基础设施低照度增强研究</div>
+                                    <p class="project-desc">
+                                            <strong>物理先验×深度双流解耦：</strong>以照明/细节两路协同，融入Retinex与颜色恒常先验。<br>
+                                            <strong>时空一致性与闪烁抑制：</strong>光流/时序注意对齐，约束跨帧曝光漂移与彩噪。<br>
+                                            <strong>鲁棒泛化与指标闭环：</strong>合成退化管线+跨数据集训练，域自适应与无参考指标联合优化。<br>
+                                            <strong>工程化低时延部署：</strong>端云协同流式推理，与监控 VMS 无缝对接。
+                                    </p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="vid-col">
+                                    <video src="videos\水下文物细节图像增强.mp4" loop="loop" controls="controls" poster="videos\images\5.jpg"></video>
+                                </div>
+                                <div class="txt-col">
+                                    <div class="project-title">面向高噪声与色偏的水下文物图像复原与增强研究</div>
+                                    <p class="project-desc">
+                                            <strong>物理一致性建模：</strong>引入水下成像先验，显式刻画波长选择性衰减与后向散射。<br>
+                                            <strong>细节—全局双流：</strong>多尺度/频域分支与全局上下文协同，色彩矫正与细节锐化间自适应权衡。<br>
+                                            <strong>域外泛化与可用性：</strong>UIEB/EUVP/RUIE联合训练合成退化管线。<br>
+                                            <strong>工程与考古友好：</strong>提供批处理与交互式加速低时延；支持实船/ROV 在线部署。
+                                    </p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="vid-col">
+                                    <video src="videos\鸟类姿态和距离推测.mp4" loop="loop" controls="controls" poster="videos\images\4.jpg"></video>
+                                </div>
+                                <div class="txt-col">
+                                    <div class="project-title">图像增强驱动的鸟类姿态与距离联合估计研究</div>
+                                    <p class="project-desc">
+                                            <strong>感知增强—任务耦合：</strong>通道级多感受野与色度恢复协同；下游端到端联训，提升可分辨性。<br>
+                                            <strong>姿态—时空建模：</strong>检测框关键点双流融合，时空编码滑翔、盘旋与振翅周期。<br>
+                                            <strong>距离—物理先验融合：</strong>单目距离头将目标框尺度、焦距与几何、衰减等线索纳入分类。<br>
+                                            <strong>系统—低时延可用：</strong>构建增强→检测→姿态→距离流式估计。
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <p id="fourth" style="height:0;margin:0;">&nbsp;</p>
+                    <section class="project-section">
+                        <h3 class="title-center-line">人口老龄化与主动健康</h3>
+                        <ul>
+                            <li>
+                                <div class="vid-col">
+                                    <video src="videos\脑电.mp4" loop="loop" controls="controls" poster="videos\images\11_2.jpg"></video>
+                                </div>
+                                <div class="txt-col">
+                                    <div class="project-title">立体眼动健康状态干预评测系统研究</div>
+                                    <p class="project-desc">
+                                            <strong>立体同步采集：</strong>立体显示与眼动视频毫级同步，帧率自适应与精细采样，注视深度误差可控。<br>
+                                            <strong>画质与校准：</strong>亮度、对比度与手动调焦协同优化，多角标定与质检保障成像清晰稳定。<br>
+                                            <strong>闭环系统：</strong>唯一标识与刺激任务选择驱动同步采集，经轨迹、注视与瞳孔多阶段分析，快速生成报告。<br>
+                                            <strong>模块化架构：</strong>控制模块、立体播放与眼动传感协同工作。
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="common/js/jquery.min.js"></script>
+    <script type="text/javascript" src="common/js/bootstrap.min.js"></script>
+    <script>
+        // 导航栏选中状态切换
+        function setActive(element) {
+            var items = document.querySelectorAll('.nav-item-custom');
+            items.forEach(function(item) { item.classList.remove('active'); });
+            element.classList.add('active');
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // 获取所有的卡片容器
+            const allCards = document.querySelectorAll('.project-section ul > li');
+            // 获取页面上所有的 video 标签
+            const allVideos = document.querySelectorAll('video');
+
+            // 1. 初始化 IntersectionObserver (检测视频是否滚出可视区域)
+            // 当视频可见比例小于 20% 时触发 (即 80% 滚出去了)
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    // 如果元素移出了可视区域
+                    if (!entry.isIntersecting) {
+                        const video = entry.target;
+                        // 如果视频正在播放，则自动暂停
+                        if (!video.paused) {
+                            console.log('视频移出视野，自动暂停');
+                            video.pause();
+                        }
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            
+            // 2. 遍历所有卡片，绑定点击逻辑、样式联动和互斥播放
+            allCards.forEach(function(card) {
+                const video = card.querySelector('video');
+                if (!video) return;
+
+                // 将视频加入可见性观察列表
+                observer.observe(video);
+
+                // --- A. 点击卡片逻辑 ---
+                card.addEventListener('click', function(e) {
+                    // 如果用户直接点击的是视频原生控件，则跳过，防止冲突
+                    if (e.target.tagName === 'VIDEO') return;
+
+                    // 切换播放状态
+                    if (video.paused) {
+                        video.play();
+                    } else {
+                        video.pause();
+                    }
+                });
+
+                // --- B. 监听视频 "play" 事件 (开始播放) ---
+                // 无论是点击卡片触发，还是点击原生控件触发，都会走到这里
+                video.addEventListener('play', function() {
+                    // [互斥逻辑] 遍历所有视频，暂停除自己以外的其他视频
+                    allVideos.forEach(otherVideo => {
+                        if (otherVideo !== video && !otherVideo.paused) {
+                            otherVideo.pause();
+                        }
+                    });
+
+                    // [样式逻辑] 给当前卡片添加高亮类 (变浅蓝)
+                    card.classList.add('playing-card');
+                });
+
+                // --- C. 监听视频 "pause" 和 "ended" 事件 (暂停或结束) ---
+                const removeHighlight = function() {
+                    card.classList.remove('playing-card');
+                };
+                video.addEventListener('pause', removeHighlight);
+                video.addEventListener('ended', removeHighlight);
+            });
+        });
+
+    </script>
+</body>
+</html>

@@ -870,7 +870,9 @@ A.info:hover    {color:green;background:transparent;text-decoration:underline}
                                     [<a href="#" onclick="copyTextAndNotify(event, '@InProceedings{Tan_2025_ICCV,author = {Tan, Junfu and Jing, Peiguang and Zhu, Yu and Liu, Yu},title = {MPBR: Multimodal Progressive Bidirectional Reasoning for Open-Set Fine-Grained Recognition},booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},month = {October},year = {2025},pages = {1282-1291}}')">bib</a>]            
                                 </p>
                                 </li>
-                            <ol>
+                                <div id="show-more" class="show-more" onclick="showMorePapers()">Show More</div>
+                                <div id="show-less" class="show-less" onclick="showLessPapers()">Show Less</div>
+                            </ol>
                         </div>
                         
 
@@ -1002,6 +1004,8 @@ A.info:hover    {color:green;background:transparent;text-decoration:underline}
                                     [<a href="#" onclick="copyTextAndNotify(event, '@ARTICLE{10149524,author={Jing, Peiguang and Cui, Kai and Zhang, Jing and Li, Yun and Su, Yuting}, journal={IEEE Internet of Things Journal}, title={Multimodal High-Order Relationship Inference Network for Fashion Compatibility Modeling in Internet of Multimedia Things}, year={2024},volume={11},number={1}, pages={353-365},keywords={Visualization;Task analysis;Internet of Things;Correlation;Semantics;Feature extraction;Multimedia communication;Fashion compatibility modeling (FCM);high-order relationship inference;Internet of Multimedia Things (IoMT);multimodal representation learning},doi={10.1109/JIOT.2023.3285601}}')">bib</a>]             
                                 </p>
                                 </li>
+                                <div id="show-more" class="show-more" onclick="showMorePapers()">Show More</div>
+                                <div id="show-less" class="show-less" onclick="showLessPapers()">Show Less</div>
                             </ol>
                         </div>
 
@@ -1082,6 +1086,8 @@ A.info:hover    {color:green;background:transparent;text-decoration:underline}
                                     [<a href="#" onclick="copyTextAndNotify(event, '@ARTICLE{9585369,author={Lu, Wei and Li, Desheng and Nie, Liqiang and Jing, Peiguang and Su, Yuting}, journal={IEEE Transactions on Multimedia}, title={Learning Dual Low-Rank Representation for Multi-Label Micro-Video Classification}, year={2023},volume={25},number={},pages={77-89},keywords={Correlation;Matrix decomposition;Task analysis;Semantics;Dictionaries;Estimation;Multimedia Web sites;Micro-video;multi-label classification;multi-modality;low-rank representation},doi={10.1109/TMM.2021.3121567}}')">bib</a>]             
                                 </p>
                                 </li>
+                                <div id="show-more" class="show-more" onclick="showMorePapers()">Show More</div>
+                                <div id="show-less" class="show-less" onclick="showLessPapers()">Show Less</div>
                             </ol>
                         </div>
 
@@ -1251,6 +1257,8 @@ A.info:hover    {color:green;background:transparent;text-decoration:underline}
                                     [<a href="#" onclick="copyTextAndNotify(event, '@ARTICLE{6508899,author={Pang, Yanwei and Ji, Zhong and Jing, Peiguang and Li, Xuelong}, journal={IEEE Transactions on Neural Networks and Learning Systems},  title={Ranking Graph Embedding for Learning to Rerank}, year={2013},volume={24},number={8},pages={1292-1303}, keywords={Dimensionality reduction;graph embedding;image search reranking;learning to rank},doi={10.1109/TNNLS.2013.2253798}}')">bib</a>]             
                                 </p>
                                 </li>
+                                <div id="show-more" class="show-more" onclick="showMorePapers()">Show More</div>
+                                <div id="show-less" class="show-less" onclick="showLessPapers()">Show Less</div>
                             </ol>
                         </div>
                     
@@ -1302,6 +1310,8 @@ A.info:hover    {color:green;background:transparent;text-decoration:underline}
                                     [<a href="http://xuebao.jlu.edu.cn/gxb/CN/10.13229/j.cnki.jdxbgxb.20230130">pdf</a>]
                                 </p>
                                 </li>
+                                <div id="show-more" class="show-more" onclick="showMorePapers()">Show More</div>
+                                <div id="show-less" class="show-less" onclick="showLessPapers()">Show Less</div>
                             </ol>
                         </div>
                     </section>
@@ -1405,40 +1415,74 @@ A.info:hover    {color:green;background:transparent;text-decoration:underline}
 
 
 
-        // 显示前8条论文
+        // 初始化所有论文列表 - 每个列表仅显示前8条论文
         document.addEventListener("DOMContentLoaded", function() {
-            var newsItems = document.querySelectorAll('.item');
-            for (var i = 0; i < 8; i++) {
-                if (newsItems[i]) {
-                    newsItems[i].style.display = 'list-item';
-                }
-            }
+            // 初始化所有论文列表
+            var paperLists = document.querySelectorAll('.paper-list');
+            paperLists.forEach(function(list) {
+                initializePaperList(list);
+            });
         });
 
-
-        document.getElementById('show-less').style.display = 'none'; // 隐藏Show Less按钮
-        // Show More功能
-        function showMorePapers() {
-            var newsItems = document.querySelectorAll('.item');
-            newsItems.forEach(function(item) {
-                item.style.display = 'list-item'; // 显示所有论文
-            });
-            document.getElementById('show-more').style.display = 'none'; // 隐藏Show More按钮
-            document.getElementById('show-less').style.display = 'inline-block'; // 显示Show Less按钮
-        }
-
-        // Show Less功能
-        function showLessPapers() {
-            var newsItems = document.querySelectorAll('.item');
-            for (var i = 0; i < newsItems.length; i++) {
-                if (i < 8) {
-                    newsItems[i].style.display = 'list-item'; // 显示前8条论文
+        function initializePaperList(paperList) {
+            var items = paperList.querySelectorAll('.item');
+            var showMoreBtn = paperList.querySelector('.show-more');
+            var showLessBtn = paperList.querySelector('.show-less');
+            
+            // 显示前8条论文
+            for (var i = 0; i < Math.min(8, items.length); i++) {
+                items[i].style.display = 'list-item';
+            }
+            
+            // 隐藏其他论文
+            for (var i = 8; i < items.length; i++) {
+                items[i].style.display = 'none';
+            }
+            
+            // 初始化按钮显示状态
+            if (showMoreBtn && showLessBtn) {
+                if (items.length > 8) {
+                    showMoreBtn.style.display = 'inline-block';
+                    showLessBtn.style.display = 'none';
                 } else {
-                    newsItems[i].style.display = 'none'; // 隐藏其他论文
+                    showMoreBtn.style.display = 'none';
+                    showLessBtn.style.display = 'none';
                 }
             }
-            document.getElementById('show-more').style.display = 'inline-block'; // 显示Show More按钮
-            document.getElementById('show-less').style.display = 'none'; // 隐藏Show Less按钮
+        }
+
+        // Show More功能 - 针对活跃的论文列表
+        function showMorePapers() {
+            var activeList = document.querySelector('.paper-list.active');
+            if (activeList) {
+                var newsItems = activeList.querySelectorAll('.item');
+                newsItems.forEach(function(item) {
+                    item.style.display = 'list-item'; // 显示所有论文
+                });
+                var showMoreBtn = activeList.querySelector('.show-more');
+                var showLessBtn = activeList.querySelector('.show-less');
+                if (showMoreBtn) showMoreBtn.style.display = 'none'; // 隐藏Show More按钮
+                if (showLessBtn) showLessBtn.style.display = 'inline-block'; // 显示Show Less按钮
+            }
+        }
+
+        // Show Less功能 - 针对活跃的论文列表
+        function showLessPapers() {
+            var activeList = document.querySelector('.paper-list.active');
+            if (activeList) {
+                var newsItems = activeList.querySelectorAll('.item');
+                for (var i = 0; i < newsItems.length; i++) {
+                    if (i < 8) {
+                        newsItems[i].style.display = 'list-item'; // 显示前8条论文
+                    } else {
+                        newsItems[i].style.display = 'none'; // 隐藏其他论文
+                    }
+                }
+                var showMoreBtn = activeList.querySelector('.show-more');
+                var showLessBtn = activeList.querySelector('.show-less');
+                if (showMoreBtn) showMoreBtn.style.display = 'inline-block'; // 显示Show More按钮
+                if (showLessBtn) showLessBtn.style.display = 'none'; // 隐藏Show Less按钮
+            }
         }
 
 
