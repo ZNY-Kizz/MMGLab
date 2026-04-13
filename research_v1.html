@@ -27,16 +27,6 @@
             100% { transform: translateX(-155.5%); }
         }
 
-        /* --- 链接与新闻样式 --- */
-        A.applink:hover {border: 2px dotted #DCE6F4;padding:2px;background-color:#ffff00;color:green;text-decoration:none}
-        A.applink       {border: 2px dotted #DCE6F4;padding:2px;color:#2F5BFF;background:transparent;text-decoration:none}
-        A.info          {color:#ba0000;background:transparent;text-decoration:none}
-        A.info:hover    {color:green;background:transparent;text-decoration:underline}
-        .news-item { display: none; }
-        .show-more, .show-less {
-            cursor: pointer; color: blue; text-decoration: underline; margin-top: 20px; display: inline-block;
-        }
-
         :root {
             --tju-blue: #003580; 
         }
@@ -97,15 +87,7 @@
                 border-bottom: 1px solid #eee;
             }
         }
-        /* ======================================================= */
-        /* === 导航栏重构 END === */
-        /* ======================================================= */
 
-
-        /* ======================================================= */
-        /* === 内容区卡片式重构 (方案2) START === */
-        /* ======================================================= */
-        
         .project-section ul { margin: 0; padding: 0; list-style: none; }
         
         /* 这里 li 充当了 .project-card 容器的角色 */
@@ -159,56 +141,20 @@
         }
 
         .vid-col video {
-            /* 视频替换为轮播图，原始视频元素隐藏 */
-            display: none;
-        }
+            /* 容器已经是40%了，所以这里恢复为100%填满容器，避免太小 */
+            width: 100%;  
+            margin: 0;   
+            
+            /* 强制锁定播放器为 16:9 标准比例 */
+            aspect-ratio: 16 / 9; 
+            /* 内容包含模式：长条视频会在黑盒子里居中 */
+            object-fit: contain;  
+            /* 黑边背景 */
+            background-color: #000; 
 
-        .image-carousel {
-            position: relative;
-            width: 100%;
-            padding-top: 56.25%;
-            overflow: hidden;
             border-radius: 8px;
-            background-color: #000;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .image-carousel img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0;
-            transition: opacity 0.6s ease;
-        }
-
-        .image-carousel img.active {
-            opacity: 1;
-        }
-
-        .carousel-indicators {
-            position: absolute;
-            left: 50%;
-            bottom: 12px;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 6px;
-            z-index: 2;
-        }
-
-        .carousel-indicator {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: rgba(255,255,255,0.45);
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .carousel-indicator.active {
-            background-color: #ffffff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+            display: block;
         }
 
         .project-title {
@@ -282,7 +228,6 @@
 
     <div class="container-fluid" style="padding:0 8%;">
         <div class="row">
-            
             <div class="col-md-2 col-xs-2 col-sm-2">
                 <div class="warpper">
                     <div class="logo"></div>
