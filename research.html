@@ -18,57 +18,10 @@
             padding: 0;
             font-family: "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
             overflow-x: hidden;
-            background-color: #f8f9fa; /* 全局背景微灰 */
+            /* 全局背景微灰 */
             color: #333;
         }
 
-        /* --- Slider 样式保持不变 --- */
-        .slider-container {
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-            background-color: #f0f0f0;
-        }
-        .slider {
-            display: flex;
-            gap: 10px;
-            position: relative;
-            animation: scroll 20s linear 2s infinite running;
-        }
-        .slide {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        .slider img {
-            max-height: 200px;
-            border-radius: 10px;
-            flex-shrink: 0;
-        }
-        .slide-number {
-            margin-top: 5px;
-            font-size: 16px;
-            color: #333;
-        }
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-155.5%); }
-        }
-
-        /* --- 链接与新闻样式 --- */
-        A.applink:hover {border: 2px dotted #DCE6F4;padding:2px;background-color:#ffff00;color:green;text-decoration:none}
-        A.applink       {border: 2px dotted #DCE6F4;padding:2px;color:#2F5BFF;background:transparent;text-decoration:none}
-        A.info          {color:#ba0000;background:transparent;text-decoration:none}
-        A.info:hover    {color:green;background:transparent;text-decoration:underline}
-        .news-item { display: none; }
-        .show-more, .show-less {
-            cursor: pointer; color: blue; text-decoration: underline; margin-top: 20px; display: inline-block;
-        }
-
-        /* ======================================================= */
-        /* === 导航栏重构 (吸顶 + 颜色逻辑反转) START === */
-        /* ======================================================= */
         :root {
             --tju-blue: #003580; 
         }
@@ -102,7 +55,6 @@
             text-decoration: none !important;
             transition: all 0.2s ease;
             
-            /* 4. 未选中状态：白底蓝字 */
             background-color: #fff; 
             color: var(--tju-blue); 
             border-right: 1px solid #f0f0f0; /* 浅色分隔线 */
@@ -112,7 +64,6 @@
             border-right: none;
         }
 
-        /* 4. 选中/激活状态：蓝底白字 */
         .nav-item-custom.active, 
         .nav-item-custom:hover {
             background-color: var(--tju-blue);
@@ -122,22 +73,14 @@
         @media (max-width: 768px) {
             .nav-tabs-custom {
                 flex-direction: column;
-                position: relative; /* 手机端通常不建议强行吸顶，占空间 */
+                position: relative;
             }
             .nav-item-custom {
                 border-right: none;
                 border-bottom: 1px solid #eee;
             }
         }
-        /* ======================================================= */
-        /* === 导航栏重构 END === */
-        /* ======================================================= */
 
-
-        /* ======================================================= */
-        /* === 内容区卡片式重构 (方案2) START === */
-        /* ======================================================= */
-        
         .project-section ul { margin: 0; padding: 0; list-style: none; }
         
         /* 这里 li 充当了 .project-card 容器的角色 */
@@ -145,7 +88,8 @@
             display: flex;            
             flex-wrap: wrap;         
             align-items: center;     
-            margin-bottom: 15px;     
+            margin-bottom: 20px;
+            margin-top: 20px;      
             
             /* 1. 卡片式核心样式 */
             background: #fff;        
@@ -154,7 +98,7 @@
             border: 1px solid rgba(0,0,0,0.02);
             
             /* 2. 内容在容器内居中，保留间距 */
-            padding: 30px; /* 给卡片内部留白，把视频框在里面 */
+            padding: 10px; /* 给卡片内部留白，把视频框在里面 */
             
             /* 3. 点击交互样式 */
             cursor: pointer; 
@@ -167,51 +111,84 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
 
-        /* ======================================================= */
-        /* === 【新增】视频播放时的卡片高亮样式 === */
-        /* ======================================================= */
         .project-section ul > li.playing-card {
             background-color: #eef6ff !important; /* 浅蓝色背景 */
             border-color: #b3d7ff !important;     /* 边框微调为蓝色 */
             box-shadow: 0 8px 25px rgba(0, 53, 128, 0.15); /* 阴影稍微加重一点 */
         }
 
-        /* --- 修改点：列宽调整 (视频4，文字6) --- */
         .vid-col {
-            flex: 0 0 40%;   /* 宽度改为 40% */
-            max-width: 40%;  /* 宽度改为 40% */
+            flex: 0 0 50%;
+            max-width: 50%;
             /* 视频与文字的间距 */
-            padding-right: 25px; 
+            padding-right: 15px; 
         }
 
         .txt-col {
-            flex: 0 0 60%;   /* 宽度改为 60% */
-            max-width: 60%;  /* 宽度改为 60% */
-            padding-left: 25px; 
+            flex: 0 0 50%;
+            max-width: 50%;
+            padding-left: 15px; 
+        }
+
+        .txt-col ul > li{
+             list-style-type: disc;
         }
 
         .vid-col video {
-            /* 容器已经是40%了，所以这里恢复为100%填满容器，避免太小 */
-            width: 100%;  
-            margin: 0;   
-            
-            /* 强制锁定播放器为 16:9 标准比例 */
+            width: 100%; 
+            position: relative;
+            overflow: hidden;
             aspect-ratio: 16 / 9; 
-            /* 内容包含模式：长条视频会在黑盒子里居中 */
             object-fit: contain;  
-            /* 黑边背景 */
             background-color: #000; 
-
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
             display: block;
+        }
+
+        .image-carousel {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            background-color: #000;
+            aspect-ratio: 16 / 9;
+        }
+
+        .image-carousel:hover .carousel-inner {
+            animation-play-state: paused;
+        }
+
+        .carousel-inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: calc(var(--slide-count, 1) * 100%);
+            display: flex;
+            flex-direction: column;
+            animation: scroll-vertical calc( (var(--slide-count, 1) - 1) * 3s ) infinite linear;
+        }
+
+        .carousel-inner img {
+            width: 100%;
+            height: calc(100% / var(--slide-count, 1));
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        @keyframes scroll-vertical {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(calc(-100% + (100% / var(--slide-count, 1)))); }
         }
 
         .project-title {
             font-size: 18px;
             color: #003580; 
             font-weight: bold;
-            margin-bottom: 15px;
+            margin-top: 15px;
+            margin-bottom: 10px;
             padding-bottom: 10px;
             border-bottom: 2px solid #eef2f6; 
             position: relative;
@@ -228,13 +205,11 @@
 
         .project-desc {
             font-size: 15px;
-            line-height: 1.8; 
+            line-height: 1.5; 
             color: #555;
             text-align: justify; 
-            margin: 0;
+            margin: 20px 0;
         }
-
-        /* --- 修改点：已删除偶数行翻转逻辑，统一为左视频右文字 --- */
         
         @media (max-width: 768px) {
             .project-section ul > li {
@@ -256,10 +231,10 @@
             color: #003580;
             font-weight: 800;
             letter-spacing: .06em;
-            margin: 4rem 0 2rem;
-            /* 增加 scroll-margin-top 配合吸顶导航，防止锚点被遮挡 */
+            margin: 1.2rem 0 3rem;
             scroll-margin-top: 80px; 
         }
+        
         .title-center-line::after {
             content: "";
             display: block;
@@ -268,17 +243,12 @@
             border-radius: 2px;
             background: linear-gradient(90deg, #003580, #0056b3);
         }
-        /* ======================================================= */
-        /* === 内容区卡片式重构 END === */
-        /* ======================================================= */
-
     </style>
 </head>
 <body>
 
     <div class="container-fluid" style="padding:0 8%;">
         <div class="row">
-            
             <div class="col-md-2 col-xs-2 col-sm-2">
                 <div class="warpper">
                     <div class="logo"></div>
@@ -286,7 +256,7 @@
                         <li role="presentation"><a href="index.html">师资简介</a></li>
                         <li role="presentation"><a href="member.html">多媒体组介绍</a></li>
                         <li role="presentation" class="active"><a href="research.html">研究成果展示</a></li>
-                        <li role="presentation"><a href="recruit.html">招生简章</a></li>
+                        <li role="presentation" class="active"><a href="recruit.html">招生简章</a></li>
                     </ul>
                 </div>
             </div>
@@ -302,116 +272,149 @@
 
                 <div>
 
-                    <p id="first" style="height:0;margin:0;">&nbsp;</p> <section class="project-section">
+                    <p id="first" style="height:0;margin:0;">&nbsp;</p> <section class="project-section" style="background-color: #f8f9fa;margin-bottom: 30px" >
                         <h3 class="title-center-line">短视频多维内容理解与分析</h3>
                         <ul>
                             <li>
                                 <div class="vid-col">
-                                    <video src="videos\阅兵.mp4" loop="loop" controls="controls" poster="videos\images\8.jpg"></video>
+                                    <div class="image-carousel">
+                                        <div class="carousel-inner">
+                                            <img src="common/img/研究方向/短视频/多标签分类1.png" alt="多标签分类1">
+                                            <img src="common/img/研究方向/短视频/多标签分类2.png" alt="多标签分类2">
+                                            <img src="common/img/研究方向/短视频/多标签分类3.png" alt="多标签分类3">
+                                            <img src="common/img/研究方向/短视频/多标签分类4.png" alt="多标签分类4">
+                                            <img src="common/img/研究方向/短视频/多模态论文.png" alt="多模态论文">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="txt-col">
-                                    <div class="project-title">央视合作阅兵视频深度可解释方法研究</div>
+                                    <div class="project-title">短视频多标签分类</div>
                                     <p class="project-desc">
-                                            <strong>色条条形码：</strong>逐帧主色聚类与色域量化，滑窗平滑去噪并保留剪辑突变。<br>
-                                            <strong>时序节律解析：</strong>色带密度卷积与峰谷检测，镜头时长分布与情绪转调显化。<br>
-                                            <strong>颜色散点云：</strong>主色HSV嵌入至平面，UMAP/t-SNE保持相似度与风格簇。<br>
-                                            <strong>尺寸与交互：</strong>缩略图作点、像素量映射大小，核密度热力与刷选联动导出。
+                                        多标签分类旨在对时长较短、内容丰富的短视频进行多语义、多标签的自动标注与理解。研究围绕视觉帧、音频、文本描述等<b>多模态信息</b>展开，通过特征提取、模态融合、标签相关性建模等方式，实现对视频中场景、物体、行为、事件、主题等<b>多个标签的并行预测</b>。为<b>内容推荐、检索审核、版权管理、舆情分析</b>等上层应用提供基础语义支撑。<br>
+                                        <br>相关成果发表在<b>IEEE TMM, IEEE TKDE, IP&M, KBS, ACM TOMM</b>等多媒体领域的SCI一区国际顶级期刊以及<b>AAAI, ICCV</b>等CCF A类国际顶级会议上。
                                     </p>
                                 </div>
                             </li>
 
                             <li>
                                 <div class="vid-col">
-                                    <video src="videos\AI视频鉴伪.mp4" loop="loop" controls="controls" poster="videos\images\1.jpg"></video>
+                                    <div class="image-carousel">
+                                        <div class="carousel-inner">
+                                            <img src="common/img/研究方向/短视频/情感分析1.png" alt="情感分析1">
+                                            <img src="common/img/研究方向/短视频/情感分析2.png" alt="情感分析2">
+                                            <img src="common/img/研究方向/短视频/情感分析3.png" alt="情感分析3">
+                                            <img src="common/img/研究方向/短视频/情感分析.png" alt="情感分析">
+
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="txt-col">
-                                    <div class="project-title">在线视频深度伪造实时检测方法研究</div>
+                                    <div class="project-title">短视频情感分析</div>
                                     <p class="project-desc">
-                                            <strong>帧级伪迹建模：</strong>残差网络多尺度捕捉压缩纹理与上采样痕。<br>
-                                            <strong>时序一致性：</strong>时序网络聚合口型、眨眼与边界漂移异常。<br>
-                                            <strong>泛化与校准：</strong>网络数据集训练，重编码扰动与温度缩放稳置信度。<br>
-                                            <strong>实时系统：</strong>网页上传即检，流式滑窗推理与热力图辅助审核。
+                                        情感分析面向图像、视频等多媒体数据，开展细粒度情感识别、情感强度估计与情感分布预测。研究通过挖掘视觉内容中的语义对象及时序动态信息，构建情感特征与人类主观感知之间的映射模型，实现对积极、消极、中性等<b>基础情感</b>以及喜悦、愤怒、悲伤、平静等<b>细粒度情绪</b>的量化分析。同时结合跨模态语义关联，提升复杂场景下情感理解的鲁棒性，广泛应用于<b>舆情监测、广告效果评估、用户体验分析与智能推荐</b>等领域。<br>
+                                        <br>相关成果发表在<b>IEEE TMM</b>等多媒体领域的SCI一区国际顶级期刊以及<b>ACM MM</b>等CCF A类国际顶级会议上。
                                     </p>
                                 </div>
                             </li>
 
                             <li>
                                 <div class="vid-col">
-                                    <video src="videos\短视频，认知相关态势感知和打法策略.mp4" loop="loop" controls="controls" poster="videos\images\2.jpg"></video>
+                                    <div class="image-carousel">
+                                        <div class="carousel-inner">
+                                            <img src="common/img/研究方向/短视频/记忆度预测1.png" alt="记忆度预测1">
+                                            <img src="common/img/研究方向/短视频/记忆度预测2.png" alt="记忆度预测2">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="txt-col">
-                                    <div class="project-title">模态大模型驱动的短视频认知分析及打法策略研究</div>
+                                    <div class="project-title">短视频记忆度预测</div>
                                     <p class="project-desc">
-                                            <strong>多模态LLM协同认知：</strong>视听特征统一并经对齐适配器接入 LLM，生成含定位的可解释结论。<br>
-                                            <strong>认知到策略：</strong>将情绪、受众偏好等映射为策略参数，用价值模型评估与生成最优策略。<br>
-                                            <strong>鲁棒与迁移能力：</strong>跨平台转码/噪声/裁剪多分布增强，支持小样本快速适配新垂类。<br>
-                                            <strong>工程闭环：</strong>网页流式推理、A/B反馈回流驱动在线更新。
+                                        记忆度预测以人类视觉认知机制为基础，对图像或视频内容被人类<b>记住的概率、持久度与重要程度</b>进行量化预测。研究通过分析视觉显著性、语义独特性、结构复杂度、时序动态变化等因素，学习内容特征与主观记忆分数之间的非线性映射关系，可用于<b>优质内容筛选、广告创意优化、教育资源评估与视频摘要生成</b>。<br>
+                                        <br>相关成果发表在<b>IEEE TMM, IEEE TCSVT</b>等多媒体领域的SCI一区国际顶级期刊上。
                                     </p>
                                 </div>
                             </li>
+
+                            <li>
+                                <div class="vid-col">
+                                    <div class="image-carousel">
+                                        <div class="carousel-inner">
+                                            <img src="common/img/研究方向/短视频/个性化推荐1.png" alt="个性化推荐1">
+                                            <img src="common/img/研究方向/短视频/个性化推荐2.png" alt="个性化推荐2">
+                                            <img src="common/img/研究方向/短视频/个性化推荐3.png" alt="个性化推荐3">
+                                            <img src="common/img/研究方向/短视频/个性化推荐4.png" alt="个性化推荐4">
+                                            <img src="common/img/研究方向/短视频/个性化推荐5.png" alt="个性化推荐5">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="txt-col">
+                                    <div class="project-title">短视频个性化推荐</div>
+                                    <p class="project-desc">
+                                        个性化推荐通过挖掘用户历史行为、偏好特征、社交关系以及物品内容属性，构建用户 — 物品匹配模型，实现精准、个性化的信息或服务推送。研究涵盖<b>时尚服饰推荐、跨域推荐、社交物联网</b>场景下的偏好感知、多模态兼容性建模等，解决<b>用户兴趣漂移、数据稀疏、冷启动</b>等问题，提升推荐的准确性、多样性与可解释性，广泛应用于<b>电商、短视频、社交网络与智慧生活服务</b>等场景。<br>
+                                        <br>相关成果发表在<b>IEEE TMM</b>等多媒体领域的SCI一区国际顶级期刊以及<b>ACM MM</b>等CCF A类国际顶级会议上。
+                                    </p>
+                                </div>
+                            </li>
+ 
                         </ul>
                     </section>
 
                     <p id="second" style="height:0;margin:0;">&nbsp;</p>
-                    <section class="project-section">
-                        <h3 class="title-center-line">面向应用的多媒体工程</h3>
+                    <section class="project-section"  style="background-color: #f8f9fa;;margin-bottom: 30px">
+                        <h3 class="title-center-line">多源图像增强与鲁棒异常检测</h3>
                         <ul>
                             <li>
                                 <div class="vid-col">
-                                    <video src="videos\数字机器人.mp4" loop="loop" controls="controls" poster="videos\images\6.jpg"></video>
+                                    <div class="image-carousel">
+                                        <div class="carousel-inner">
+                                            <img src="common/img/研究方向/图像/低照度增强1.png" alt="低照度增强1">
+                                            <img src="common/img/研究方向/图像/低照度增强2.png" alt="低照度增强2">
+                                            <img src="common/img/研究方向/图像/低光照增强.png" alt="低照度增强3">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="txt-col">
-                                    <div class="project-title">具有情绪自适应交互感知导向的数字机器人</div>
+                                    <div class="project-title">低照度图像增强</div>
                                     <p class="project-desc">
-                                            <strong>领域专家化：</strong>以域适配+指令对齐实现知识边界的精准掌握；结合RAG支持可追溯回答。<br>
-                                            <strong>情绪与风格可控：</strong>通过情感嵌入与风格适配器，配合偏好优化实现风格回答。<br>
-                                            <strong>画像驱动个性化：</strong>构建“静态属性—行为轨迹—兴趣标签”三层画像并在线更新。<br>
-                                            <strong>系统与运营级能力：</strong>端云协同的流式推理链，毫秒级可观测与 A/B 评测。
+                                        低照图像增强针对夜间、逆光、暗光等极端光照条件下采集的图像，开展噪声抑制、动态范围拉伸、色彩还原与细节恢复。研究结合可见光与红外信息互补、频域增强等策略，在<b>提升图像亮度与对比度</b>的同时<b>保留真实纹理，避免过曝、色偏与伪影</b>。该方向服务于<b>安防监控、自动驾驶、夜间摄影、移动端影像优化</b>等对视觉质量与鲁棒性要求较高的实际场景。<br>
+                                        <br>相关成果发表在<b>Neural Networks</b>等人工智能领域的SCI一区国际顶级期刊以及<b>WACV</b>等国际顶级会议上。
                                     </p>
                                 </div>
                             </li>
 
                             <li>
                                 <div class="vid-col">
-                                    <video src="videos\动作识别.mp4" loop="loop" controls="controls" poster="videos\images\7.jpg"></video>
+                                    <div class="image-carousel">
+                                        <div class="carousel-inner">
+                                            <img src="common/img/研究方向/图像/图像融合1.png" alt="多源图像融合1">
+                                            <img src="common/img/研究方向/图像/图像融合2.png" alt="多源图像融合2">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="txt-col">
-                                    <div class="project-title">工厂作业细粒度动作识别研究</div>
+                                    <div class="project-title">多源图像融合</div>
                                     <p class="project-desc">
-                                            <strong>细粒度表征：</strong>建模姿态—部件—工具交互，度量学习区分近似动作。<br>
-                                            <strong>多模态时空：</strong>RGB+骨架双流，跨视角对齐的时空 Transformer 聚合。<br>
-                                            <strong>鲁棒泛化：</strong>跨设备迁移，域自适应与噪声鲁棒训练协同。<br>
-                                            <strong>工程闭环：</strong>边端协同轻量化部署，在线主动学习与异常预警联动。
+                                        多源图像融合将红外、可见光、雷达、多光谱等不同传感器获取的图像进行信息整合，生成信息更全面、对比度更优、细节更丰富的融合图像。研究重点在于保留<b>源图像的显著结构</b>、热辐射信息与纹理细节，抑制噪声与伪影，<b>提升后续目标检测、跟踪、识别等任务的性能</b>。广泛应用于<b>安防监控、遥感解译、自动驾驶、医疗影像与军事观测</b>等领域。<br>
+                                        <br>相关成果发表在<b>KBS</b>等人工智能领域的SCI一区国际顶级期刊上。
                                     </p>
                                 </div>
                             </li>
 
                             <li>
                                 <div class="vid-col">
-                                    <video src="videos\头盔.mp4" loop="loop" controls="controls" poster="videos\images\10.jpg"></video>
+                                    <div class="image-carousel">
+                                        <div class="carousel-inner">
+                                            <img src="common/img/研究方向/图像/异常检测1.png" alt="异常检测1">
+                                            <img src="common/img/研究方向/图像/异常检测2.png" alt="异常检测2">
+                                            <img src="common/img/研究方向/图像/异常检测3.png" alt="异常检测3">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="txt-col">
-                                    <div class="project-title">施工场景安全帽佩戴合规视频实时监测平台</div>
+                                    <div class="project-title">异常缺陷检测</div>
                                     <p class="project-desc">
-                                            <strong>头盔佩戴与扣带识别：</strong>人头—安全帽双分支检测，细粒度分割判定佩戴、颜色与扣带闭合。<br>
-                                            <strong>时序一致性：</strong>SORT/Kalman轨迹聚合与光流约束，低头转身与遮挡时抑制抖动漏检。<br>
-                                            <strong>泛化与校准：</strong>光照/压缩/运动模糊扰动训练，温度缩放与分层阈值稳置信度。<br>
-                                            <strong>实时系统：</strong>摄像头/RTSP接入即检，流式滑窗推理与热力图辅助审核。
-                                    </p>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="vid-col">
-                                    <video src="videos\具身智能.mp4" loop="loop" controls="controls" poster="videos\images\9.jpg"></video>
-                                </div>
-                                <div class="txt-col">
-                                    <div class="project-title">具身智能蔬果采摘机械臂研究</div>
-                                    <p class="project-desc">
-                                            <strong>果实与果柄感知：</strong>RGB-D/多光谱融合，实例分割+3D定位抗遮挡与逆光。<br>
-                                            <strong>柔顺抓取与剥离：</strong>软体夹爪+阻抗/力控闭环，最小损伤断柄与表皮保护。<br>
-                                            <strong>视动协同与规划：</strong>主动视角选位建图，树冠内多目标序列调度。<br>
-                                            <strong>泛化与实时系统：</strong>Sim2Real域自适应与风雨尘扰动鲁棒，在线标定。
+                                        异常检测旨在从大量正常样本中<b>自动识别偏离常态的稀有样本、突发事件或缺陷目标</b>，涵盖工业缺陷检测、图像变化检测、视频异常行为识别、小样本异常检测等。研究通过差异感知、特征重构、对抗学习、多尺度聚合与对比学习等方式，在少标注甚至无标注条件下实现高鲁棒、低误报的异常判别，为<b>安防监控、工业质检、遥感监测、网络安全</b>等提供关键技术支撑。<br>
+                                        <br>相关成果发表在<b>IEEE TMM, IEEE TGRS, ESWA</b>等多媒体领域的SCI一区国际顶级期刊上。
                                     </p>
                                 </div>
                             </li>
@@ -419,71 +422,228 @@
                     </section>
 
                     <p id="third" style="height:0;margin:0;">&nbsp;</p>
-                    <section class="project-section">
-                        <h3 class="title-center-line">多源图像融合及增强</h3>
+                    <section class="project-section"  style="background-color: #f8f9fa;;margin-bottom: 30px">
+                        <h3 class="title-center-line">医学影像处理与精准诊疗</h3>
                         <ul>
                             <li>
                                 <div class="vid-col">
-                                    <video src="videos\机场等设施暗光增强.mp4" loop="loop" controls="controls" poster="videos\images\3.jpg"></video>
+                                    <div class="image-carousel">
+                                        <div class="carousel-inner">
+                                            <img src="common/img/研究方向/医疗/退行性神经疾病1.png" alt="退行性神经疾病1">
+                                            <img src="common/img/研究方向/医疗/退行性神经疾病2.png" alt="退行性神经疾病2">
+                                            <img src="common/img/研究方向/医疗/退行性神经疾病3.png" alt="退行性神经疾病3">
+                                            <img src="common/img/研究方向/医疗/退行性神经疾病4.png" alt="退行性神经疾病4">
+                                            <img src="common/img/研究方向/医疗/退行性神经疾病5.png" alt="退行性神经疾病5">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="txt-col">
-                                    <div class="project-title">感知质量驱动的关键基础设施低照度增强研究</div>
+                                    <div class="project-title">退行性神经疾病筛查及康复</div>
                                     <p class="project-desc">
-                                            <strong>物理先验×深度双流解耦：</strong>以照明/细节两路协同，融入Retinex与颜色恒常先验。<br>
-                                            <strong>时空一致性与闪烁抑制：</strong>光流/时序注意对齐，约束跨帧曝光漂移与彩噪。<br>
-                                            <strong>鲁棒泛化与指标闭环：</strong>合成退化管线+跨数据集训练，域自适应与无参考指标联合优化。<br>
-                                            <strong>工程化低时延部署：</strong>端云协同流式推理，与监控 VMS 无缝对接。
+                                        该方向以<b>阿尔茨海默病等退行性神经疾病</b>为研究对象，利用<b>眼动追踪、立体视觉刺激、多模态感知数据</b>等方法，实现早期筛查、辅助诊断、病程评估与康复效果监测。通过构建认知-视觉-眼动关联模型，捕捉早期细微认知损伤特征，提高疾病检出率，同时结合物联网与可穿戴设备实现<b>居家监测与长期随访</b>，为神经退行性疾病的早防早诊早治提供智能化技术手段。<br>
+                                        <br>本研究课题与<b>天津市环湖医院</b>合作，构建立体眼动追踪系统，VR康复系统等多个成果。相关成果发表在<b>IP&M, IEEE JBHI, IEEE IOT</b>等医学、物联网领域的SCI一区国际顶级期刊上。
                                     </p>
                                 </div>
                             </li>
 
                             <li>
                                 <div class="vid-col">
-                                    <video src="videos\水下文物细节图像增强.mp4" loop="loop" controls="controls" poster="videos\images\5.jpg"></video>
+                                    <div class="image-carousel">
+                                        <div class="carousel-inner">
+                                            <img src="common/img/研究方向/医疗/疼痛评估.png" alt="疼痛评估1">
+                                            <img src="common/img/研究方向/医疗/面部提取.png" alt="疼痛评估2">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="txt-col">
-                                    <div class="project-title">面向高噪声与色偏的水下文物图像复原与增强研究</div>
+                                    <div class="project-title">疼痛评估</div>
                                     <p class="project-desc">
-                                            <strong>物理一致性建模：</strong>引入水下成像先验，显式刻画波长选择性衰减与后向散射。<br>
-                                            <strong>细节—全局双流：</strong>多尺度/频域分支与全局上下文协同，色彩矫正与细节锐化间自适应权衡。<br>
-                                            <strong>域外泛化与可用性：</strong>UIEB/EUVP/RUIE联合训练合成退化管线。<br>
-                                            <strong>工程与考古友好：</strong>提供批处理与交互式加速低时延；支持实船/ROV 在线部署。
+                                        疼痛评估旨在通过多模态生理信号、面部表情、行为动作等非侵入式数据，实现对人体疼痛程度的<b>客观量化与分级评估</b>。研究涵盖面部微表情识别、生理信号分析、肢体动作特征提取，构建鲁棒的疼痛评估模型。该方向可应用于<b>临床疼痛监测（如术后镇痛、慢性疼痛管理）、重症患者护理、康复治疗效果评估以及疼痛相关药物研发的疗效检测</b>，弥补传统主观疼痛评分（如 VAS 评分）的主观性强、个体差异大、依赖患者配合等不足。<br>
+                                        <br>本研究课题与<b>天津市第三中心医院</b>合作，构建标准化术后疼痛评估数据集。
                                     </p>
                                 </div>
                             </li>
 
                             <li>
                                 <div class="vid-col">
-                                    <video src="videos\鸟类姿态和距离推测.mp4" loop="loop" controls="controls" poster="videos\images\4.jpg"></video>
+                                    <div class="image-carousel">
+                                        <div class="carousel-inner">
+                                            <img src="common/img/研究方向/医疗/低造影剂1.png" alt="低造影剂1">
+                                            <img src="common/img/研究方向/医疗/低造影剂2.png" alt="低造影剂2">
+                                            <img src="common/img/研究方向/医疗/低造影剂3.png" alt="低造影剂3">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="txt-col">
-                                    <div class="project-title">图像增强驱动的鸟类姿态与距离联合估计研究</div>
+                                    <div class="project-title">低造影剂图像增强</div>
                                     <p class="project-desc">
-                                            <strong>感知增强—任务耦合：</strong>通道级多感受野与色度恢复协同；下游端到端联训，提升可分辨性。<br>
-                                            <strong>姿态—时空建模：</strong>检测框关键点双流融合，时空编码滑翔、盘旋与振翅周期。<br>
-                                            <strong>距离—物理先验融合：</strong>单目距离头将目标框尺度、焦距与几何、衰减等线索纳入分类。<br>
-                                            <strong>系统—低时延可用：</strong>构建增强→检测→姿态→距离流式估计。
+                                        低造影剂图像增强主要面向 CT、MRI 等医学影像，在降低造影剂使用剂量、减少人体副作用与肾脏负担的前提下，通过图像复原技术<b>提升组织对比度、增强病灶显影、抑制伪影与噪声</b>。研究注重图像保真度与临床可用性，辅助医生在低剂量造影条件下<b>实现病灶识别、分期判断与随访评估</b>，推动更安全的<b>影像检查技术</b>落地。<br>
+                                        <br>本研究课题与<b>天津市第一中心医院</b>合作，构建临床卵巢癌MR图像增强系统。
                                     </p>
                                 </div>
                             </li>
+
+                            <li>
+                                <div class="vid-col">
+                                    <div class="image-carousel">
+                                        <div class="carousel-inner">
+                                            <img src="common/img/研究方向/医疗/营养推荐1.png" alt="营养推荐1">
+                                            <img src="common/img/研究方向/医疗/糖尿病数据集.png" alt="营养推荐2">
+                                            <img src="common/img/研究方向/医疗/营养推荐2.png" alt="营养推荐3">
+                                            <img src="common/img/研究方向/医疗/营养推荐3.png" alt="营养推荐4">
+                                            <img src="common/img/研究方向/医疗/营养推荐4.png" alt="营养推荐5">
+                                            <img src="common/img/研究方向/医疗/营养推荐5.png" alt="营养推荐6">
+                                            <img src="common/img/研究方向/医疗/康食图像数据集.png" alt="营养推荐7">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="txt-col">
+                                    <div class="project-title">精准营养推荐</div>
+                                    <p class="project-desc">
+                                        精准营养推荐结合用户健康指标、生理状态、饮食偏好、疾病风险与营养需求，构建健康导向的个性化饮食推荐模型。通过多源健康数据融合、营养知识图谱与用户偏好建模，实现<b>膳食方案智能规划、营养成分均衡配比与慢性病风险干预</b>，为<b>健康管理、糖尿病防控、体重管理与老年康养</b>提供智能化饮食支持。<br>
+                                        <br>本研究课题与<b>天津市第三中心医院，天津中医药大学第一附属医院，天津医科大学朱宪彝纪念医院</b>等医疗机构合作，构建多维指标糖尿病患者数据集。相关成果发表在<b>ESWA, ACM TOMM</b>等多媒体领域的SCI一区国际顶级期刊上。
+                                    </p>
+                                </div>
+                            </li>
+
+                            
                         </ul>
                     </section>
 
                     <p id="fourth" style="height:0;margin:0;">&nbsp;</p>
-                    <section class="project-section">
-                        <h3 class="title-center-line">人口老龄化与主动健康</h3>
+                    <section class="project-section"  style="background-color: #f8f9fa;;margin-bottom: 30px">
+                        <h3 class="title-center-line">应用导向的多媒体系统工程</h3>
                         <ul>
                             <li>
                                 <div class="vid-col">
-                                    <video src="videos\脑电.mp4" loop="loop" controls="controls" poster="videos\images\11_2.jpg"></video>
+                                    <div class="image-carousel">
+                                        <div class="carousel-inner">
+                                            <img src="common/img/研究方向/应用/三维眼动.png" alt="立体眼动1">
+                                            <img src="common/img/研究方向/应用/三维眼动认知评测.png" alt="立体眼动2">
+                                            <img src="common/img/研究方向/应用/眼动追踪.png" alt="立体眼动3">
+                                            <img src="common/img/研究方向/应用/眼动追踪2.png" alt="立体眼动4">
+                                            <img src="common/img/研究方向/应用/立体眼动.png" alt="立体眼动5">
+                                            <img src="common/img/研究方向/应用/VR康复1.png" alt="立体眼动6">
+                                            <img src="common/img/研究方向/应用/VR康复2.png" alt="立体眼动7">
+                                            <img src="common/img/研究方向/应用/VR康复3.png" alt="立体眼动8">
+                                            <img src="common/img/研究方向/应用/VR康复4.png" alt="立体眼动9">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="txt-col">
-                                    <div class="project-title">立体眼动健康状态干预评测系统研究</div>
+                                    <div class="project-title">立体眼动健康状态干预评测系统</div>
                                     <p class="project-desc">
-                                            <strong>立体同步采集：</strong>立体显示与眼动视频毫级同步，帧率自适应与精细采样，注视深度误差可控。<br>
-                                            <strong>画质与校准：</strong>亮度、对比度与手动调焦协同优化，多角标定与质检保障成像清晰稳定。<br>
-                                            <strong>闭环系统：</strong>唯一标识与刺激任务选择驱动同步采集，经轨迹、注视与瞳孔多阶段分析，快速生成报告。<br>
-                                            <strong>模块化架构：</strong>控制模块、立体播放与眼动传感协同工作。
+                                        本项目旨在开发一套自主研发的3D立体视觉刺激平台及同步眼动数据采集系统，用于神经系统疾病的筛查。该系统旨在通过刺激设计、注视反应分析及具有临床意义的行为标志物，支持对<b>阿尔茨海默病、轻度认知障碍和自闭症谱系障碍</b>进行客观的评估，同时构建立体眼动为基础的VR康复系统。<br>
+                                        该项目的应用目标是开发一款可部署的医疗筛查设备及分析工作流，并可扩展至<b>医院、康复中心及社区医疗</b>场景。为此本研究团队成功研发全球<b>首个融合边缘计算与联邦学习的眼动物联网架构</b>。此项研究标志着物联网技术在认知障碍相关疾病精准诊断中的范式转变。
+                                    </p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="vid-col">
+                                    <video src="common/img/研究方向/应用/玉渊谭天.mp4" controls></video>
+                                    <div class="image-carousel" style="margin-top: 30px;">
+                                        <div class="carousel-inner">
+                                            <img src="common/img/研究方向/应用/央视合作1.png" alt="央视合作1">
+                                            <img src="common/img/研究方向/应用/央视合作2.png" alt="央视合作2">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="txt-col">
+                                    <div class="project-title">玉渊谭天</div>
+                                    <p class="project-desc">
+                                        本研究团队联合<b>中央广播电视总台技术团队</b>，依托其重磅打造的新媒体栏目《玉渊谭天》，将多模态技术应用于央视总台真实的短视频内容生产场景，累计获得<b>千万级点赞量及亿级播放量</b>。代表性工作包括：
+                                        <p class="project-desc" style="line-height: 1.5; margin-top: 0px;"><b>跨视频事件对齐</b>：将非结构化的视频帧序列映射为离散记忆单元，通过多智能体将宏观跨视频理解任务拆解为多个可控子任务，在央视<b>《逐帧解读16次大阅兵》</b>等节目中实现了人工标注结果与自动标注结果的高一致性。</p>
+                                        <p class="project-desc" style="line-height: 1.5; margin-top: 0px;"><b>镜头语言解构</b>：开展视频镜头语言的细粒度拆解与重组研究，精细化提取视觉叙事要素，并在此基础上研发智能分镜生成智能体，实现从文本语义到视觉叙事逻辑的跨模态映射，自动输出专业分镜建议。</p>
+                                        <p class="project-desc" style="line-height: 1.5; margin-top: 0px;"><b>内容生产与传播优化</b>：在<b>热点素材库构建</b>方面，本项目团队构建短视频热点素材生成网络模型，联合视觉、音频、文本模态完成对短视频热点内容的捕获，并构建跨模态语义的热点素材库；在<b>垂直场景多元素智能标注</b>方面，针对旅游等应用，深度整合视频标题、封面及视频内容等多模态信息，构建了集地理位置识别、热点元素定位与多标签分类于一体的智能解析系统；在<b>动态传播度预测</b>方面，通过引入多模态时序建模方法，将阶段性用户互动数据与短视频内容特征进行异构特征融合，有效解析了传播行为的演化规律，实现了对传播趋势的精准预判。</p>
+                                    </p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="vid-col">
+                                    <div class="image-carousel">
+                                        <div class="carousel-inner">
+                                            <img src="common/img/研究方向/应用/幽默大模型1.png" alt="幽默大模型1">
+                                            <img src="common/img/研究方向/应用/幽默大模型2.png" alt="幽默大模型2">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="txt-col">
+                                    <div class="project-title">欢乐搭档互动数字人</div>
+                                    <p class="project-desc">
+                                        本研究团队与<b>宝盈智能公司</b>合作，旨在开发一套自主研发的欢乐搭档双人互动数字人系统，用于多场景沉浸式情感交互服务。该系统依托三元对话生态、情感化幽默引擎及多模态处理技术，整合多模态处理、数据采集与内容管理能力，确保交互响应流畅、体验贴合需求，支持对等场景提供个性化互动体验，并可扩展至等<b>各类实际应用</b>场景。
+                                    </p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="vid-col">
+                                    <div class="image-carousel">
+                                        <div class="carousel-inner">
+                                            <img src="common/img/研究方向/应用/丰田1.png" alt="车门板质量检测1">
+                                            <img src="common/img/研究方向/应用/丰田2.png" alt="车门板质量检测2">
+                                            <img src="common/img/研究方向/应用/丰田3.png" alt="车门板质量检测3">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="txt-col">
+                                    <div class="project-title">车门板质量检测系统</div>
+                                    <p class="project-desc">
+                                        本项目团队与<b>丰田汽车公司</b>合作，旨在开发一套自主研发的车门板质量检测系统，融合3D视觉核心技术，用于<b>车门板生产全流程质检</b>,实现智能化、高精度质检，替代传统人工检测，提升生产效率与产品合格率。该系统通过高精度视觉采集、智能缺陷识别及装配精度检测，支持对进行精准判定。该项目的应用目标是开发一款可部署的智能化质检设备及高效检测工作流，并可扩展至<b>生产流水线全流程监管</b>场景。
+                                    </p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="vid-col">
+                                    <div class="image-carousel">
+                                        <div class="carousel-inner">
+                                            <img src="common/img/研究方向/应用/水下文物增强1.png" alt="水下文物增强1">
+                                            <img src="common/img/研究方向/应用/水下文物增强2.png" alt="水下文物增强2">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="txt-col">
+                                    <div class="project-title">水下文物图像复原与增强</div>
+                                    <p class="project-desc">
+                                        本项目研究聚焦高噪声与色偏场景下的水下文物图像复原与增强，通过引入水下成像先验构建物理一致性建模，显式刻画波长选择性衰减与后向散射；设计细节—全局双流结构，实现多尺度频域分支与全局上下文协同，达成色彩矫正与细节锐化的自适应权衡；同时兼顾工程与考古友好性，提供批处理与交互式加速低时延方案，支持实船/ROV在线部署，为<b>水下文物图像处理及相关考古应用</b>提供支持。
+                                    </p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="vid-col">
+                                    <div class="image-carousel">
+                                        <div class="carousel-inner">
+                                            <img src="common/img/研究方向/应用/短视频.png" alt="短视频标注平台1">
+                                            <img src="common/img/研究方向/应用/短视频语义标注平台.png" alt="短视频标注平台2">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="txt-col">
+                                    <div class="project-title">短视频语义标注平台</div>
+                                    <p class="project-desc">
+                                        本项目团队<b>自主研发</b>了面向短视频的语义标注平台，用于高效标注短视频数据。该平台具备批量读取、便捷标注和高效存储短视频数据资源的功能，支持多人协同标注，覆盖<b>人群数量、拍摄视角、拍摄场景以及观众情绪</b>等多个主题。此外，平台还针对室内场景、室外场景及抽象场景提供了细粒度的语义级标注，确保对短视频内容的多角度深入描述，从而保证数据集的高质量。
+                                    </p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="vid-col">
+                                    <div class="image-carousel">
+                                        <div class="carousel-inner">
+                                            <img src="common/img/研究方向/应用/情感大模型1.png" alt="情感大模型1">
+                                            <img src="common/img/研究方向/应用/情感大模型2.png" alt="情感大模型2">
+                                            <img src="common/img/研究方向/应用/情感大模型3.png" alt="情感大模型3">
+                                            <img src="common/img/研究方向/应用/情感大模型4.png" alt="情感大模型4">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="txt-col">
+                                    <div class="project-title">多模态情感大模型</div>
+                                    <p class="project-desc">
+                                        本研究团队与<b>中电信人工智能研究院</b>合作，研发一款自主创新的情感多模态大模型，用于多场景智能赋能。该模型依托超大规模高质量多模态训练数据体系与“偏好对齐—强化优化”递进式训练机制，支持在等领域实现高水平表现。在视觉理解、复杂推理与幻觉抑制上优势显著，推理高效、部署便捷，已落地<b>政务、工业、交通</b>等场景，是具<b>备产业级能力的国产多模态大模型</b>。
                                     </p>
                                 </div>
                             </li>
@@ -527,73 +687,23 @@
                 });
             }, { threshold: 0.2 });
 
-            
-            // 2. 遍历所有卡片，绑定点击逻辑、样式联动和互斥播放
-            allCards.forEach(function(card) {
-                const video = card.querySelector('video');
-                if (!video) return;
-
-                // 将视频加入可见性观察列表
-                observer.observe(video);
-
-                // --- A. 点击卡片逻辑 ---
-                card.addEventListener('click', function(e) {
-                    // 如果用户直接点击的是视频原生控件，则跳过，防止冲突
-                    if (e.target.tagName === 'VIDEO') return;
-
-                    // 切换播放状态
-                    if (video.paused) {
-                        video.play();
-                    } else {
-                        video.pause();
-                    }
-                });
-
-                // --- B. 监听视频 "play" 事件 (开始播放) ---
-                // 无论是点击卡片触发，还是点击原生控件触发，都会走到这里
-                video.addEventListener('play', function() {
-                    // [互斥逻辑] 遍历所有视频，暂停除自己以外的其他视频
-                    allVideos.forEach(otherVideo => {
-                        if (otherVideo !== video && !otherVideo.paused) {
-                            otherVideo.pause();
-                        }
-                    });
-
-                    // [样式逻辑] 给当前卡片添加高亮类 (变浅蓝)
-                    card.classList.add('playing-card');
-                });
-
-                // --- C. 监听视频 "pause" 和 "ended" 事件 (暂停或结束) ---
-                const removeHighlight = function() {
-                    card.classList.remove('playing-card');
-                };
-                video.addEventListener('pause', removeHighlight);
-                video.addEventListener('ended', removeHighlight);
+            // 自动初始化每个图片轮播的 slide 数量，并添加无缝循环
+            document.querySelectorAll('.carousel-inner').forEach(function(inner) {
+                const images = inner.querySelectorAll('img');
+                if (images.length > 1) {
+                    // 复制第一张图片到最后，实现无缝循环
+                    const firstImage = images[0].cloneNode(true);
+                    inner.appendChild(firstImage);
+                    
+                    // 设置slide count为原始数量（不包含复制的图片）
+                    inner.style.setProperty('--slide-count', images.length);
+                } else {
+                    // 只有一张图片的情况
+                    inner.style.setProperty('--slide-count', 1);
+                }
             });
         });
 
-        // --- Slider 逻辑保持不变 ---
-        const slider = document.getElementById('slider');
-        if(slider){ 
-            let sliderWidth = slider.scrollWidth;
-            let currentPosition = 0;
-            function startSlider() {
-                currentPosition -= 1; 
-                if (Math.abs(currentPosition) >= sliderWidth / 2) { currentPosition = 0; }
-                slider.style.left = currentPosition + 'px';
-                requestAnimationFrame(startSlider);
-            }
-            function cloneImages() {
-                let images = slider.querySelectorAll('img');
-                images.forEach(img => {
-                    let clone = img.cloneNode(true);
-                    slider.appendChild(clone);
-                });
-                sliderWidth = slider.scrollWidth; 
-            }
-            cloneImages();
-            startSlider();
-        }
     </script>
 </body>
 </html>
