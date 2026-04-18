@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="keywords" content="Open Vision, Open View, Open Venture" />
+    <title>TJUMMG主页</title>
+    <link rel="stylesheet" href="common/css/bootstrap.min.css">
+    <link rel="stylesheet" href="common/css/index.css">
+    <link rel="shortcut icon" href="common/img/logo3.png">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .slider-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            background-color: #f0f0f0;
+        }
+
+        .slider {
+            display: flex;
+            gap: 10px; /* 图片之间的间距 */
+            position: relative;
+            animation: scroll 20s linear 2s infinite running; /* 调整滚动速度 */
+        }
+
+        .slide {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .slider img {
+            max-height: 200px;
+            /* width: 300px;
+            height: 200px; */
+            border-radius: 10px; /* 图片的圆角 */
+            flex-shrink: 0;
+        }
+
+        .slide-number {
+            margin-top: 5px;
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-155.5%); }
+        }
+
+        .media-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .media-card {
+            width: calc(33.33% - 20px);
+            border: 1px solid #dddddd;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            background: #fff;
+        }
+
+        .media-card img {
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .media-card p {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .media-card {
+                width: 100%;
+            }
+        }
+        .media-body {
+            margin-top: 10px;
+        }
+
+        .media-tag {
+            display: block;
+            margin-top: 8px;
+        }
+
+        .media-text {
+            
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body >
+
+<style>
+A.applink:hover {border: 2px dotted #DCE6F4;padding:2px;background-color:#ffff00;color:green;text-decoration:none}
+A.applink       {border: 2px dotted #DCE6F4;padding:2px;color:#2F5BFF;background:transparent;text-decoration:none}
+A.info          {color:#ba0000;background:transparent;text-decoration:none}
+A.info:hover    {color:green;background:transparent;text-decoration:underline}
+</style>
+
+    <div class="container-fluid" style="padding:0 10%;">
+        <dic class="row">
+            <div class="col-md-2 col-xs-2 col-sm-2 " >
+                <div class="warpper" >
+                    <div class="logo" >
+                    </div>
+                    <ul class="nav nav-pills nav-stacked " >
+                        <li role="presentation"><a href="index.html">师资简介</a></li>
+                        <li role="presentation"><a href="member.html">团队介绍</a></li>
+                        <li role="presentation"><a href="research.html">研究成果</a></li>
+                        <li role="presentation"><a href="recruit.html">招生就业</a></li>
+                        <li role="presentation" class="active"><a href="lives.html">团队风采</a></li>
+                    </ul>
+                    <p style="font-family: 'Arial';font-size:1.3rem; color: white; text-align: center; position: absolute; bottom: 1rem; left: 0; right: 0;line-height: 1.5;">pgjing@tju.edu.cn<br>天津市南开区卫津路92号</p>
+                </div>
+            </div>
+            <div class="col-md-10 col-xs-10 col-sm-10 mb20">
+                <nav class="navbar navbar-default ">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                        </button>
+                    </div>
+                    <div class="container-fluid " style="padding: 0 ;">
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="#Lives">多媒体组生活</a></li>
+                                <li><a href="#media">媒体宣传</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <div class="content">
+                    <p id="Lives" style="height:4rem;margin: 0;">&nbsp;</p>
+                    <section>
+                        <h3 style="margin-top: 1%;"><strong>多媒体组生活</strong></h3>
+                        <div class="slider-container">
+                            <div class="slider">
+
+                                <div class="slide">
+                                    <img src="common/img/风采生活/photo1.jpg" alt="图片1">
+                                    <div class="slide-number"><strong>天大美景</strong></div>
+                                </div>
+
+                                <div class="slide">
+                                    <img src="common/img/风采生活/photo6.jpg" alt="图片2">
+                                    <div class="slide-number"><strong>多媒体组成员聚会</strong></div>
+                                </div>
+
+                                <div class="slide">
+                                    <img src="common/img/风采生活/photo5.jpg" alt="图片3">
+                                    <div class="slide-number"><strong>多媒体组成员聚会</strong></div>
+                                </div>
+
+                                <div class="slide">
+                                    <img src="common/img/风采生活/photo10.jpg" alt="图片4">
+                                    <div class="slide-number"><strong>毕业留影</strong></div>
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="common/img/风采生活/photo7.jpg" alt="图片5">
+                                    <div class="slide-number"><strong>毕业留影</strong></div>
+                                </div>
+
+                                <div class="slide">
+                                    <img src="common/img/风采生活/photo8.jpg" alt="图片6">
+                                    <div class="slide-number"><strong>毕业留影</strong></div>
+                                </div>
+
+                                <div class="slide">
+                                    <img src="common/img/风采生活/photo2.jpg" alt="图片7">
+                                    <div class="slide-number"><strong>天大美景</strong></div>
+                                </div>
+
+                                <div class="slide">
+                                    <img src="common/img/风采生活/photo9.jpg" alt="图片8">
+                                    <div class="slide-number"><strong>出游合影</strong></div>
+                                </div>
+
+                                <div class="slide">
+                                    <img src="common/img/风采生活/photo4.jpg" alt="图片9">
+                                    <div class="slide-number"><strong>生日聚会</strong></div>
+                                </div>
+
+                                <div class="slide">
+                                    <img src="common/img/风采生活/photo11.jpg" alt="图片10">
+                                    <div class="slide-number"><strong>赴香港学术交流合影</strong></div>
+                                </div>
+
+                                <div class="slide">
+                                    <img src="common/img/风采生活/photo12.jpg" alt="图片11">
+                                    <div class="slide-number"><strong>学术交流展示</strong></div>
+                                </div>  
+                                
+                                <div class="slide">
+                                    <img src="common/img/风采生活/photo3.jpg" alt="图片12">
+                                    <div class="slide-number"><strong>天大美景</strong></div>
+                                </div>  
+                            </div>
+                        </div>
+                    </section>
+
+                    <p id="media" style="height:4rem;margin: 0;">&nbsp;</p>
+                    <section style="font-size: 1.8rem;">
+                        <h3 style="margin-top: 1%;"><strong>媒体宣传</strong></h3>
+                        <div class="media-grid">
+                            <div class="media-card">
+                                <img alt="ABPolicy" src="common/img/媒体宣传/ABPolicy.png">
+                                <div class="media-body">
+                                    <span class="media-tag"><a href="https://mp.weixin.qq.com/s/5U4uj7DWfqAmgEu4GMPfGg"><p margin-top: 12px></p><b>论文推荐</b></a></span>
+                                    <div class="media-text">杨帆同学针对同步推理导致的运动不流畅问题，提出了ABPolicy，用B样条 + 流匹配 + 异步重拟合技术，从根源解决机械臂动作卡顿、抖动、响应慢问题，动态任务成功率大幅提升。</div>
+                                </div>
+                            </div>
+                            <div class="media-card">
+                                <img alt="钟亚洁" src="common/img/媒体宣传/钟亚洁.png">
+                                <div class="media-body">
+                                    <span class="media-tag"><a href="https://mp.weixin.qq.com/s/wsBB4giXFiJkY_jR3UcD3g"><p margin-top: 12px></p><b>就业风采</b></a></span>
+                                    <div class="media-text">钟亚洁同学品学兼优、科研实践双优，获评多项校级荣誉与高额奖学金，学生工作经验丰富。她坚定选择成为选调生，立志扎根基层、服务群众，以实干担当在基层一线践行青春使命。</div>
+                                </div>
+                            </div>
+                            <div class="media-card">
+                                <img alt="央视合作" src="common/img/媒体宣传/智能视觉.gif">
+                                <div class="media-body">
+                                    <span class="media-tag"><a href="https://mp.weixin.qq.com/s/vqSVnUj6c0GNjVGIDymelg"><p margin-top: 12px></p><b>合作报道</b></a></span>
+                                    <div class="media-text">苏育挺教授、井佩光副教授、硕士生刘宇轩等参与协作研发全国总工会与央视联合打造的大国工匠公共传播项目，运用多模态视觉智能技术对百余位大国工匠历年报道影像进行分析。</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </dic>
+    </div>
+
+    <script type="text/javascript" src="common/js/jquery.min.js"></script>
+    <script type="text/javascript" src="common/js/bootstrap.min.js"></script>
+    <script>
+        $('.navbar-nav li').unbind().on('click',function(){
+            if($(this).hasClass("active")){
+                console.log(1)
+            }else{
+                $(this).addClass("active");
+                $(this).siblings().removeClass('active');
+            }
+        })
+
+        // 滚动
+        const slider = document.getElementById('slider');
+        let sliderWidth = slider.scrollWidth;
+        let containerWidth = document.querySelector('.slider-container').offsetWidth;
+        let currentPosition = 0;
+
+        function startSlider() {
+            currentPosition -= 1; // 控制滚动速度
+
+            if (Math.abs(currentPosition) >= sliderWidth / 2) {
+                currentPosition = 0; // 当滚动到一半时重置
+            }
+
+            slider.style.left = currentPosition + 'px';
+
+            requestAnimationFrame(startSlider);
+        }
+
+        // 复制图片以实现无缝滚动
+        function cloneImages() {
+            let images = slider.querySelectorAll('img');
+            images.forEach(img => {
+                let clone = img.cloneNode(true);
+                slider.appendChild(clone);
+            });
+            sliderWidth = slider.scrollWidth; // 更新slider的宽度
+        }
+
+        cloneImages();
+        startSlider();
+    </script>
+</body>
+</html>
